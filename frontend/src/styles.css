@@ -1,0 +1,12 @@
+/* styles.css o en tu archivo global de estilos */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.Background {
+  @apply bg-gradient-to-b from-blue-500 to-white min-h-screen;
+}
+
+html, body {
+  @apply w-full h-full min-h-screen;
+}

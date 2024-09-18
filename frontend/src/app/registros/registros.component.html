@@ -1,0 +1,120 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mega</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+</head>
+<body class="bg-gray-200">
+    <nav class="bg-white border-b border-gray-300">
+        <div class="flex justify-between items-center px-9">
+            <!-- Ícono de Menú -->
+            <button id="menuBtn">
+                <i class="fas fa-bars text-cyan-500 text-lg"></i>
+            </button>
+            <!-- Logo -->
+            <div class="ml-1">
+                <img src="" alt="logo" class="h-20 w-28">
+            </div>
+            <!-- Ícono de Notificación y Perfil -->
+            <div class="space-x-4">
+                <button>
+                    <i class="fas fa-bell text-cyan-500 text-lg"></i>
+                </button>
+                <button>
+                    <i class="fas fa-user text-cyan-500 text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Barra lateral -->
+    <div id="sideNav" class="lg:block hidden bg-white w-64 h-screen fixed rounded-none border-none">
+        <div class="p-4 space-y-4">
+            <a href="#" class="relative px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400">
+                <i class="fas fa-home text-white"></i>
+                <span class="-mr-1 font-medium">Inicio</span>
+            </a>
+            <a routerLink="/registros" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Registros</span>
+            </a>
+            <a href="#" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Crear</span>
+            </a>
+            <a href="#" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+                <i class="fas fa-user"></i>
+                <span>Mi cuenta</span>
+            </a>
+            <a href="#" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Cerrar sesión</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="lg:ml-64 lg:pl-4 lg:flex lg:flex-col lg:w-75% mt-5 mx-2">
+        <!-- Buscador -->
+        <div class="bg-white rounded-full border-none p-3 mb-4 shadow-md">
+            <div class="flex items-center">
+                <i class="px-3 fas fa-search ml-1"></i>
+                <input type="text" placeholder="Buscar..." class="ml-3 focus:outline-none w-full">
+            </div>
+        </div>
+
+        <!-- Tabla debajo del buscador -->
+        <section class="container px-4 mx-auto">
+            <div class="flex flex-col">
+                <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                        <div class="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
+                            <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                                <thead class="bg-gray-50 dark:bg-gray-800">
+                                    <tr>
+                                        <th scope="col" class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                            <span>ID</span>
+                                        </th>
+                                        <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                            Trabajador
+                                        </th>
+                                        <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                            Órdenes Completadas
+                                        </th>
+                                        <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                            Fecha
+                                        </th>
+                                        <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                            Total de Puntos
+                                        </th>
+                                        <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                            Bono
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of data">
+                                        <td class="px-4 py-3 text-sm text-gray-500">{{ item.id }}</td>
+                                        <td class="px-4 py-3 text-sm text-gray-500">{{ item.trabajador }}</td>
+                                        <td class="px-4 py-3 text-sm text-gray-500">{{ item.ordenesCompletadas }}</td>
+                                        <td class="px-4 py-3 text-sm text-gray-500">{{ item.fecha }}</td>
+                                        <td class="px-4 py-3 text-sm text-gray-500">{{ item.totalPuntos }}</td>
+                                        <td class="px-4 py-3 text-sm text-gray-500">{{ item.bono }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const sideNav = document.getElementById('sideNav');
+        menuBtn.addEventListener('click', () => {
+            sideNav.classList.toggle('hidden');
+        });
+    </script>
+</body>
