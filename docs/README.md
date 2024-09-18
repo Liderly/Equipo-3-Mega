@@ -25,13 +25,13 @@ De acuerdo a lo anterior se requiere desarrollar un sistema de generación de re
 Para la realización del frontend se utilizaron las siguientes tecnologías:
 - Angular v 17
 Por otro lado, para el backend se utilizaron las siguientes:
-- ASP.NET  v8.0
-- Entity framework
+-- .NET version 8.0
+- Entity Framework Core -> versión: 8.0.7
+- Entity Framework Core.SqlServer -> versión: 8.0.7
+- Microsoft.EntityFrameworkCore.Tools -> versión: 8.0.7
+Estos pueden ser añadidos  mediante los comandos `dotnet add package [package name]` o si estas utilizando Visual Studio puedee añadirlos usando `Nuget package manager`.
+
 Para la elaboración de la base de datos se utilizó SQL SERVER 2019.
-
-## ¿Cómo utilizar este repositorio?
-
-
 
 ## Objetivos
 - General
@@ -70,6 +70,22 @@ La solución propuesta para la problemática dada es el desarrollo de una plataf
   - Importe del bono a pagar
 
 Lo anterior visualizado a manera de tabla.
+
+## ¿Cómo utilizar este repositorio?
+1. Obtener la url del repositorio: Hacer clic en el botón de code y copiar la URL del repositorio.
+2. Clonar el repositorio: abrir la terminar y ejecutar el cimando `git clone`
+3. Crear una base de datos en SQL Server en la cual añadas las tablas necesarias para la funcionalidad (consultar archivo SQLQueryHackaton.sql)
+4. Una vez creada la base de datos, ahora en tu archivo `appsettings.json` crea tu ConnectionStrings de la siguiente menra y cambia los datos necesarios para pode rconectarte a tu propia base de datos:
+- Ejemplo:
+- ` "ConnectionStrings": {
+    "DefaultConnection": "Data Source=your_server_name;Initial Catalog=your_database_name;Encrypt=False;Persist Security Info=True;User ID=your_server_user_name;Password=your_sqlserver_password;"
+  } `
+5. Instalar las dependencias necesarias, restaurarlas con `dotnet restore`, luego compilar el proyecto con dotnet build y posteriormente ejecutarlo con dotnet run.
+6. Si es necesario puedes ejecutar migraciones para actualziar tu base de datos.
+En el caso de dependencias necesarias, se pueden instalar de la siguiente manera Estos pueden ser añadidos  mediante los comandos `dotnet add package [package name]` o si estas utilizando Visual Studio puedee añadirlos usando `Nuget package manager`.
+7. Una vez verificado que tu API se encuentre en funcionamiento, se procedera a pasar al frontend para ejecutarlo.
+- En la raíz del proyecto, ejecute el comando `npm install` para instalar las dependencias necesarias.
+- Después de hacerlo, se ejecuta el comando `ng serve` para iniciar el proyecto y esperar a que se abra en navegador.
 
 ## Diagrama de la base de datos
  - Diagrama normalizado de la base de datos
