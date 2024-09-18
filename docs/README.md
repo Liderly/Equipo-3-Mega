@@ -89,4 +89,5 @@ En el caso de dependencias necesarias, se pueden instalar de la siguiente manera
 
 ## Diagrama de la base de datos
  - Diagrama normalizado de la base de datos
+ ![alt text](image.png)
  -
