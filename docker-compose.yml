@@ -1,0 +1,63 @@
+version: '3.8'
+services:
+  # Backend Service
+  backend:
+    image: backend
+    container_name: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    networks:
+      - localnet
+    depends_on:
+      - database
+      - redis
+    command: ["dotnet", "ef", "database update"]
+    environment:
+      - DATABASE_CONNECTION_STRING=Server=database;Database=MEGAHACK;User ID=sa;Password=MegaWinn3rs-2024$;Trust Server Certificate=True;
+      - REDIS_CONNECTION_STRING=redis:6379
+  # Frontend Service
+  frontend:
+    image: frontend
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    networks:
+      - localnet
+    depends_on:
+      - backend
+    ports:
+      - "80:8080"
+  # Database Service
+  database:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: database
+    environment:
+      SA_PASSWORD: "MegaWinn3rs-2024"
+      ACCEPT_EULA: "Y"
+    networks:
+      - localnet
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+  # Redis Service
+  redis:
+    image: redis:alpine
+    container_name: redis
+    networks:
+      - localnet
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+networks:
+  localnet:
+    driver: bridge
+
+volumes:
+  sql_data:
+    driver: local
+  redis_data:
+    driver: local
