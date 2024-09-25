@@ -1,0 +1,53 @@
+<div class="grid grid-cols-12">
+  <!-- Primera columna (Formulario) -->
+  <div class="col-span-12 md:col-span-4 text-white font-sans font-bold bg-black min-h-screen pl-7" style="min-width: 300px; max-width: 100%;">
+      <form class="grid grid-rows-6 grid-flow-col min-h-screen items-center justify-items-start" [formGroup]="loginForm"  (ngSubmit)="login()">
+          <div class="row-span-4 row-start-2 text-4xl">
+            Bienvenido
+              <div class="pt-10 pr-20">
+                  <label class="text-sm font-sans font-medium">
+                    Número de empleado
+                  </label>
+                  <input
+                      [ngClass]="{'border-red-600':IsInvalidField('NumEmpleado')}"
+                      formControlName="NumEmpleado"
+                      type="text"
+                      autocomplete="off"
+                      placeholder="Ingresa tu número de empleado"
+                      class="w-full bg-black py-3 px-12 mt-5 border hover: border-gray-500 rounded shadow text-base font-sans"/>
+                      @if (IsInvalidField('NumEmpleado')) {
+                        <small class="text-red-700 text-sm">{{getErrorMessage('NumEmpleado')}}</small>
+                      }
+              </div>
+              <div class="pt-2 pr-20">
+                  <label class="text-sm font-sans font-medium">
+                    Contraseña
+                  </label>
+                  <input
+                       [ngClass]="{'border-red-700':IsInvalidField('password')}"
+                      formControlName="password"
+                      type="password"
+                      name="password"
+                      placeholder="Ingresa tu contraseña"
+                      class=" w-full bg-black py-3 px-12 mt-5 border hover:border-gray-500 rounded shadow text-base font-sans"/>
+                      @if (IsInvalidField('NumEmpleado')) {
+                        <small class="text-red-700 text-sm">{{getErrorMessage('NumEmpleado')}}</small>
+                      }
+              </div>
+              <!-- Botón -->
+              <div class="text-sm font-sans font-medium w-full pr-20 pt-14">
+                  <button
+                      type="submit"
+                      class="text-center w-full py-4 bg-blue-700 hover:bg-blue-400 rounded-md text-white">
+                         Iniciar sesión
+                  </button>
+              </div>
+          </div>
+      </form>
+  </div>
+
+  <!-- Segunda columna (Imagen) - Oculta en pantallas pequeñas -->
+  <div class="relative banner col-span-8 md:col-span-8">
+    <img src="assets\megacable.png" alt="logo mega" width="220" class="absolute  right-0 md:bottom-0 sm:hidden md:block lg:block sm:bottom-6">
+  </div>
+</div>

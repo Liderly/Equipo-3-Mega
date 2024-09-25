@@ -5,6 +5,7 @@ namespace backend.Models
     public class Assignment
     {
         public int id { get; set; }
+        public DateTime Assigment_date { get; set; }
         public int technician_id { get; set; }
         public int subscriber_id { get; set; }
         public int service_id { get; set; }

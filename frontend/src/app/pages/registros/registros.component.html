@@ -1,0 +1,110 @@
+<p-table
+    #TechsTable
+    [value]="data.technitians"
+    [paginator]="true"
+    [rows]="10"
+    [totalRecords]="data.totalTechs"
+    [lazy]="true"
+    [loading]="false"
+    [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']"
+    sortField="name"
+    sortMode="single"
+    dataKey="NumTech"
+    rowGroupMode="subheader"
+    groupRowsBy="NumTech"
+    [tableStyle]="{'min-width': '70rem','border-collapse': 'collapse'}">
+    <ng-template pTemplate="caption">
+      <div class="flex justify-end">
+        <div class="flex gap-3">
+          <div class="relative">
+            <input
+              pInputText
+              type="text"
+              class="p-2 pl-10 w-full"
+              [(ngModel)]="searchTerm"
+              (input)="filterGlobal($event)"
+              placeholder="Buscar técnico..." />
+
+            <!-- Ícono posicionado absolutamente dentro del input -->
+            <i class="pi pi-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+          </div>
+          <p-button icon="pi pi-refresh" (onClick)="searchTerm=''" [rounded]="true" />
+        </div>
+
+
+
+      </div>
+  </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:16.66%;border: 1px solid #ccc;">Numero de empleado</th>
+                <th style="width:16.66%;border: 1px solid #ccc;">Nombre</th>
+                <th style="width:16.66%;border: 1px solid #ccc;">Direccion</th>
+                <th style="width:16.66%;border: 1px solid #ccc;">Cuadrilla</th>
+                <th style="width:16.66%;border: 1px solid #ccc;">Puntos</th>
+                <th style="width:16.66%;border: 1px solid #ccc;">Bono</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="groupheader" let-technitian let-rowIndex="rowIndex" let-expanded="expanded">
+            <tr>
+                <td colspan="1" style="border: 1px solid #cccccc3b;">
+                    <button
+                        type="button"
+                        pButton
+                        pRipple
+                        [pRowToggler]="technitian"
+                        class="p-button-text p-button-rounded p-button-plain mr-1 p-0"
+                        [classList]="'p-0'"
+                        [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'">
+                    </button>
+                    <span class="font-bold ml-2">{{technitian.NumTech}}</span>
+                  </td>
+                  <td colspan="1" style="border: 1px solid #cccccc3b;">
+                    <span class="font-bold ml-2">{{technitian.name}}</span>
+                  </td>
+                  <td colspan="1" style="border: 1px solid #cccccc3b;">
+                    <span class="font-bold ml-2">{{technitian.address}}</span>
+                  </td>
+                  <td colspan="1" style="border: 1px solid #cccccc3b;">
+                    <span class="font-bold ml-2">{{technitian.crew}}</span>
+                  </td>
+                  <td colspan="1" style="border: 1px solid #cccccc3b;">
+                    <span class="font-bold ml-2">{{getTotalPoints(technitian)}}</span>
+                  </td>
+                  <td colspan="1" style="border: 1px solid #cccccc3b;">
+                    <span class="font-bold ml-2">{{getTotalBono(technitian)|currency}}</span>
+                  </td>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="rowexpansion" let-service>
+          <tr>
+            <td colspan="6">
+              <div style="width: 100%; overflow-x: auto;">
+                <p-table [value]="service.tasks" [tableStyle]="{'min-width': '100%'}">
+                  <ng-template pTemplate="header">
+                    <tr>
+                      <th style="width: 25%;;border: 1px solid #cccccca9;">Servicio</th>
+                      <th style="width: 25%;;border: 1px solid #cccccca9;">Cliente atendido</th>
+                      <th style="width: 20%;;border: 1px solid #cccccca9;">Fecha de solicitud</th>
+                      <th style="width: 20%;;border: 1px solid #cccccca9;">Estatus de solicitud</th>
+                      <th style="width: 10%;;border: 1px solid #cccccca9;">Puntos</th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-task>
+                    <tr>
+                      <td style="border: 1px solid #cccccc3b;">{{ task.desc }}</td>
+                      <td style="border: 1px solid #cccccc3b;">{{ task.Client }}</td>
+                      <td style="border: 1px solid #cccccc3b;">{{ task.fecha }}</td>
+                      <td style="border: 1px solid #cccccc3b;">
+                        <p-tag [value]="task.status" [severity]="getStatusTag(task.status)"></p-tag>
+                      </td>
+                      <td style="border: 1px solid #cccccc3b;">{{ task.puntos }}</td>
+                    </tr>
+                  </ng-template>
+                </p-table>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+</p-table>
