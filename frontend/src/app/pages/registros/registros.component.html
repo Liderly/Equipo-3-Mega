@@ -105,9 +105,9 @@
           <span class="font-bold ml-2">{{ getTotalPoints(technitian) }}</span>
         </td>
         <td colspan="1" style="border: 1px solid #cccccc3b">
-          <span class="font-bold ml-2">
-            {{ getTotalBono(technitian) | currency }}
-          </span>
+          <span class="font-bold ml-2">{{
+            getTotalBono(technitian) | currency
+          }}</span>
         </td>
       </tr>
     </ng-template>
@@ -143,9 +143,7 @@
               <ng-template pTemplate="body" let-task>
                 <tr>
                   <td style="border: 1px solid #cccccc3b">{{ task.desc }}</td>
-                  <td style="border: 1px solid #cccccc3b">
-                    {{ task.Client }}
-                  </td>
+                  <td style="border: 1px solid #cccccc3b">{{ task.Client }}</td>
                   <td style="border: 1px solid #cccccc3b">{{ task.fecha }}</td>
                   <td style="border: 1px solid #cccccc3b">
                     <p-tag
@@ -153,9 +151,7 @@
                       [severity]="getStatusTag(task.status)"
                     ></p-tag>
                   </td>
-                  <td style="border: 1px solid #cccccc3b">
-                    {{ task.puntos }}
-                  </td>
+                  <td style="border: 1px solid #cccccc3b">{{ task.puntos }}</td>
                 </tr>
               </ng-template>
             </p-table>
