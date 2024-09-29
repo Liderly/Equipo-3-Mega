@@ -69,6 +69,7 @@ namespace backend.src.Services
             .FirstAsync();
             return ParseTechInfo(tech);
         }
+
         public async Task<BonusReport> GetFullReport()
         {
             var report = new BonusReport();

@@ -4,6 +4,8 @@ import { firstValueFrom, map, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { BonusListResponse, Technitian } from '../interfaces/techniciansListResponse.interface';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -29,4 +31,5 @@ export class BonusService {
       map((response: BonusListResponse) => response.technitians)
     ));
   }
+
 }
