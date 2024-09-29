@@ -31,6 +31,28 @@ hackathon-proyecto/
 ├── README.md                     # Documentación general del proyecto (este archivo)
 ```
 
+## Arquitectura del Proyecto
+
+La arquitectura del sistema está diseñada siguiendo el patrón de **arquitectura de microservicios**, separando claramente las responsabilidades entre el frontend y el backend. Esto permite una mayor escalabilidad y mantenimiento, facilitando futuras actualizaciones y mejoras. A continuación, se describen los componentes clave:
+
+### 1. Frontend
+- **Angular**: Se encarga de la interfaz de usuario, ofreciendo una experiencia interactiva. La arquitectura está basada en componentes, lo que facilita la reutilización y organización del código. Utiliza servicios para manejar la comunicación con la API backend, asegurando una separación clara entre la lógica de presentación y la lógica de negocio.
+
+### 2. Backend
+- **API REST con .NET**: La API está diseñada para manejar todas las operaciones relacionadas con los datos de empleados, tareas y reportes. Se basa en controladores y servicios que interactúan con la base de datos mediante Entity Framework Core. Este enfoque promueve la separación de preocupaciones y facilita las pruebas unitarias y la mantenibilidad.
+- **Entity Framework Core**: Actúa como el ORM (Object-Relational Mapper) para interactuar con SQL Server, simplificando las consultas y manipulaciones de datos.
+
+### 3. Base de Datos
+- **SQL Server**: Se utiliza para almacenar todos los datos relacionados con empleados, tareas y reportes. La base de datos está estructurada de manera que se optimiza la consulta y la integridad de los datos.
+
+### 4. Comunicación entre Componentes
+- El frontend se comunica con el backend a través de solicitudes HTTP, utilizando métodos como GET, POST, PUT y DELETE para realizar operaciones CRUD (Crear, Leer, Actualizar, Borrar) en los datos.
+
+### 5. Diagrama de Arquitectura
+- Para una mejor visualización de la arquitectura del sistema, consulta el archivo `architecture.md` en la carpeta `docs`, donde se incluye un diagrama que ilustra la relación entre los diferentes componentes del sistema.
+
+Este enfoque modular no solo mejora la calidad del software, sino que también permite una rápida adaptación a cambios en los requisitos del negocio.
+
 ##Tecnologías Utilizadas
 
 ### Frontend
