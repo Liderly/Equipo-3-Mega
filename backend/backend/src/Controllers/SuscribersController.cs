@@ -24,13 +24,12 @@ namespace Backend.Controllers
         /// - pageNumber: Número de la página a consultar (debe ser mayor a 0).
         /// - pageSize: Cantidad de elementos por página (debe ser mayor a 0).
         /// - sortBy (opcional): Campo por el cual ordenar los resultados.
-        /// - SortDirection (opcional): Dirección de ordenamiento (asc o desc).
         /// </param>
         /// <returns>Un objeto SubscriberResponse que contiene una lista de suscriptores y la información de paginación.</returns>
         /// <remarks>
         /// Ejemplo de solicitud:
         /// 
-        ///     GET /api/suscribers?pageNumber=1&amp;pageSize=10&amp;sortBy=name&amp;SortDirection=asc
+        ///     GET /api/suscribers?pageNumber=1&amp;pageSize=10&amp;sortBy=name
         /// 
         /// Esta solicitud devuelve la primera página con 10 suscriptores, ordenados por nombre de forma ascendente.
         /// </remarks>

@@ -2,10 +2,8 @@ namespace Backend.DTO
 {
     public interface ITaskDto
     {
-        
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public DateTime DueDate { get; set; }
-        public bool IsComplete { get; set; }
+        int technician_id { get; set; }
+        int subscriber_id { get; set; }
+        int service_id { get; set; }
     }
 }

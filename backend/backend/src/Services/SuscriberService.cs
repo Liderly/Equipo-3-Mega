@@ -10,20 +10,20 @@ namespace Services
     public class SuscriberService : ISuscriberService
     {
         private readonly ContextDB _context;
-        private readonly ICacheService cacheService;
+        private readonly ICacheService _cacheService;
 
 
         public SuscriberService(ContextDB context, ICacheService cacheService)
         {
             _context = context;
-            this.cacheService = cacheService;
+            _cacheService = cacheService;
         }
 
         public async Task<SubscriberResponse> GetSubscribers(PaginateProps props)
         {
             int skip = (props.PageNumber - 1) * props.PageSize;
             string cacheKey = $"subscribers_{skip}_{props.PageSize}";
-            var cacheValue = await cacheService.GetCache<SubscriberResponse>(cacheKey);
+            var cacheValue = await _cacheService.GetCache<SubscriberResponse>(cacheKey);
             if (cacheValue != null)
             {
                 return cacheValue;
@@ -37,7 +37,7 @@ namespace Services
                 ).ToList(),
                 Elements = await _context.Subscriptors.CountAsync()
             };
-            await cacheService.SetCache(resp,cacheKey);
+            await _cacheService.SetCache(resp,cacheKey);
             return resp;
                
         }
@@ -45,7 +45,7 @@ namespace Services
         {
             var suscriber = await _context.Subscriptors
                 .Include(x => x.Assignments)
-                    .ThenInclude(x => x.ServiceCatalog)
+                    .ThenInclude(x => x.JobsCatalog)
                 .FirstOrDefaultAsync(x => x.id == id);
             return ParseSubInfo(suscriber);
         }
@@ -53,28 +53,9 @@ namespace Services
         {
             var query = _context.Subscriptors
                 .Include(x => x.Assignments)
-                    .ThenInclude(x => x.ServiceCatalog)
+                    .ThenInclude(x => x.JobsCatalog)
                 .Skip(skip)
                 .Take(props.PageSize);
-            switch (props.SortBy.ToLower())
-            {
-                case "name":
-                    query = props.SortDirection.ToLower() == "desc"
-                        ? query.OrderByDescending(x => x.name)
-                        : query.OrderBy(x => x.name);
-                    break;
-                case "date":
-                    query = props.SortDirection.ToLower() == "desc"
-                        ? query.OrderByDescending(x => x.last_name) 
-                        : query.OrderBy(x => x.last_name);
-                    break;
-                case "id":
-                default:
-                    query = props.SortDirection.ToLower() == "desc"
-                        ? query.OrderByDescending(x => x.id)
-                        : query.OrderBy(x => x.id);
-                    break;
-            }
             var suscriberInfo = await query.ToListAsync();
             return suscriberInfo;
         }
@@ -85,14 +66,14 @@ namespace Services
                 id = x.id,
                 name = x.name,
                 lasst_name = x.last_name,
-                post_Code = x.post_Code,
+                post_Code = x.post_code,
                 street = x.street,
-                zone_sub = x.zone_sub,
+                zone_sub = x.zone,
                 assigments = x.Assignments.Select(a => new AssigmentsDetails
                 {
                     assignment_date = DateTime.Now.ToString(),
                     assignment_status = a.status_assigment,
-                    assignment_type = a.ServiceCatalog?.service_name ?? "Unknown"
+                    assignment_type = a.JobsCatalog?.name ?? "Unknown"
                 }).ToList()
             };
             }

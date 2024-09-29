@@ -1,15 +1,14 @@
+using backend.Models;
 using backend.src.DTO;
-using Backend.Models;
+using Backend.DTO;
 
 namespace Backend.Services
 
 {
     public interface ITaskService
     {
-        Task<IEnumerable<SuscribersInfoDto>> GetTasks(PaginateProps props);
-        // Task<Task> GetTask(int id);
-        // Task<Task> CreateTask(Task task);
-        // Task<Task> UpdateTask(int id, Task task);
-        // Task<Task> DeleteTask(int id);
+        Task<AssignmentDto> CreateTask(CreateTaskDto task);
+        Task<AssignmentDto> UpdateTask(int id, UpdateTaskDto task);
+        Task<Assignment> DeleteTask(int id);
     }
 }

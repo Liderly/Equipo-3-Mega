@@ -1,18 +1,23 @@
-export interface TechListResponse {
+export interface BonusListResponse {
   technitians: Technitian[];
-  totalTechs: number;
+  total_Technicians: number;
 }
 export interface Technitian {
-  NumTech: string;
+  numTech: number;
   name: string;
-  address: string;
   crew: string;
+  totalBonus: number;
+  totalPoints: number;
   tasks: Task[];
 }
 interface Task {
-  desc: string;
-  Client: string;
+  assigmentId: string;
+  description: string;
+  client_name: string;
+  client_address: string;
   status: string;
-  fecha: string;
-  puntos: number;
+  assigned_date: string;
+  points: number;
 }
+
+
