@@ -6,6 +6,6 @@ namespace backend.src.Services
     {
          Task<BonusReport> GetBonusReport(PaginateProps props,int search);
         Task<BonusReport.TechInfo> GetBonusReportById(int techNumber);
-        //Task<BonusReport> GetFullReport();
+        Task<BonusReport> GetFullReport();
     }
 }

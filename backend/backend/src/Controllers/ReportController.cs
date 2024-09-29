@@ -64,5 +64,24 @@ namespace Backend.Controllers
             }
             return Ok(techReport);
         }
+
+        /// <summary>
+        /// Obtener un listado de los bonos de todos los tecnicos.
+        /// </summary>
+        /// <returns>Detalles de bono de tecnico.</returns>
+        /// <remarks>
+        /// Ejemplo de solicitud:
+        ///
+        ///     GET /api/Report/1002
+        ///
+        /// </remarks>
+
+        [HttpGet]
+        [Route("All")]
+        public async Task<ActionResult<BonusReport>> GetFullReport()
+        {
+            var report = await _report_service.GetFullReport();
+            return Ok(report);
+        }
     }
 }
