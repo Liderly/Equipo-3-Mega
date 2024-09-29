@@ -53,7 +53,7 @@ La arquitectura del sistema está diseñada siguiendo el patrón de **arquitectu
 
 Este enfoque modular no solo mejora la calidad del software, sino que también permite una rápida adaptación a cambios en los requisitos del negocio.
 
-##Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 ### Frontend
 - Angular 18: Framework para construir aplicaciones web dinámicas y responsivas.
