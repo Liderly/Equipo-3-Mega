@@ -8,12 +8,10 @@ namespace backend.src.DTO
         public int PageNumber { get; set; } = 1;
 
         [Range(1, 100, ErrorMessage = "El tamaño de página debe estar entre 1 y 100.")]
-        public int PageSize { get; set; } = 20;
+        public int PageSize { get; set; } = 10;
 
         [RegularExpression("id|name|lastname", ErrorMessage = "El campo 'SortBy' solo puede ser 'id', 'name' o 'lastname'.")]
         public string SortBy { get; set; } = "id";
 
-        [RegularExpression("asc|desc", ErrorMessage = "El campo 'SortDirection' solo puede ser 'asc' o 'desc'.")]
-        public string SortDirection { get; set; } = "asc";
     }
 }

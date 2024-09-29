@@ -5,6 +5,7 @@ using Backend.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Services;
+using System.Net;
 using System.Reflection;
 
 namespace Backend
@@ -14,28 +15,44 @@ namespace Backend
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            
 
             builder.Services.AddHttpClient();
             builder.Services.AddStackExchangeRedisCache(options =>
             {
-                options.Configuration = builder.Configuration["Caching:RedisConnection"]; 
+                options.Configuration = "localhost:6379"; 
                 options.InstanceName = "BonosCache";
             });
             builder.Logging.ClearProviders();
             builder.Logging.AddConsole();
             builder.Services.AddDbContext<ContextDB>(options =>
             {
+                
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
                
             });
             ///Services
             builder.Services.AddScoped<ITaskService, TaskService>();
             builder.Services.AddScoped<ISuscriberService, SuscriberService>();
+            builder.Services.AddScoped<IBonusReportService, BonusReportService>();
+            builder.Services.AddScoped<IEmploymentService, EmploymentService>();
             builder.Services.AddSingleton<ICacheService, CacheService>();
 
             //Controllers
             builder.Services.AddControllers();
 
+            //Cors
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("OnlyFrontEnd",
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:4200")
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                    });
+            });
+            
             // Swagger
             builder.Services.AddSwaggerGen();
             builder.Services.AddMemoryCache();
@@ -46,6 +63,7 @@ namespace Backend
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 docs.IncludeXmlComments(xmlPath);
             });
+            
             var app = builder.Build();
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
@@ -63,7 +81,7 @@ namespace Backend
 
             app.UseAuthorization();
 
-
+            app.UseCors("OnlyFrontEnd");
             app.MapControllers();
 
             app.Run();

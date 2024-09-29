@@ -4,6 +4,7 @@ using Backend.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace backend.Migrations
 {
     [DbContext(typeof(ContextDB))]
-    partial class ContextDBModelSnapshot : ModelSnapshot
+    [Migration("20240926000024_InitialMigration")]
+    partial class InitialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,7 +43,13 @@ namespace backend.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("post_Code")
+                    b.Property<int>("number")
+                        .HasColumnType("int");
+
+                    b.Property<long>("phone")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("post_code")
                         .HasColumnType("int");
 
                     b.Property<string>("street")
@@ -48,16 +57,20 @@ namespace backend.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<string>("zone_sub")
+                    b.Property<string>("street_number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("zone")
                         .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
                     b.HasKey("id");
 
-                    b.HasIndex("post_Code");
+                    b.HasIndex("post_code");
 
-                    b.HasIndex("zone_sub");
+                    b.HasIndex("zone");
 
                     b.HasIndex("last_name", "name");
 
@@ -69,108 +82,240 @@ namespace backend.Migrations
                             id = 1,
                             last_name = "Garcia",
                             name = "Juan",
-                            post_Code = 12345,
+                            number = 1,
+                            phone = 3919890119L,
+                            post_code = 12345,
                             street = "Calle 1",
-                            zone_sub = "Zona Norte"
+                            street_number = "1219",
+                            zone = "Zona Norte"
                         },
                         new
                         {
                             id = 2,
                             last_name = "Hernandez",
                             name = "Maria",
-                            post_Code = 12346,
+                            number = 2,
+                            phone = 3919890120L,
+                            post_code = 12346,
                             street = "Calle 2",
-                            zone_sub = "Zona Sur"
+                            street_number = "2468",
+                            zone = "Zona Sur"
                         },
                         new
                         {
                             id = 3,
                             last_name = "Lopez",
                             name = "Pedro",
-                            post_Code = 12347,
+                            number = 3,
+                            phone = 3919890121L,
+                            post_code = 12347,
                             street = "Calle 3",
-                            zone_sub = "Zona Este"
+                            street_number = "3579",
+                            zone = "Zona Este"
                         },
                         new
                         {
                             id = 4,
                             last_name = "Martinez",
                             name = "Ana",
-                            post_Code = 12348,
+                            number = 4,
+                            phone = 3919890122L,
+                            post_code = 12348,
                             street = "Calle 4",
-                            zone_sub = "Zona Oeste"
+                            street_number = "4680",
+                            zone = "Zona Oeste"
                         },
                         new
                         {
                             id = 5,
                             last_name = "Gomez",
                             name = "Luis",
-                            post_Code = 12349,
+                            number = 5,
+                            phone = 3919890123L,
+                            post_code = 12349,
                             street = "Calle 5",
-                            zone_sub = "Zona Centro"
+                            street_number = "5791",
+                            zone = "Zona Centro"
                         },
                         new
                         {
                             id = 6,
                             last_name = "Rodriguez",
                             name = "Laura",
-                            post_Code = 12350,
+                            number = 6,
+                            phone = 3919890124L,
+                            post_code = 12350,
                             street = "Calle 6",
-                            zone_sub = "Zona Norte"
+                            street_number = "6802",
+                            zone = "Zona Norte"
                         },
                         new
                         {
                             id = 7,
                             last_name = "Perez",
                             name = "Carlos",
-                            post_Code = 12351,
+                            number = 7,
+                            phone = 3919890125L,
+                            post_code = 12351,
                             street = "Calle 7",
-                            zone_sub = "Zona Sur"
+                            street_number = "7913",
+                            zone = "Zona Sur"
                         },
                         new
                         {
                             id = 8,
                             last_name = "Ramirez",
                             name = "Elena",
-                            post_Code = 12352,
+                            number = 8,
+                            phone = 3919890126L,
+                            post_code = 12352,
                             street = "Calle 8",
-                            zone_sub = "Zona Este"
+                            street_number = "8024",
+                            zone = "Zona Este"
                         },
                         new
                         {
                             id = 9,
                             last_name = "Sanchez",
                             name = "Miguel",
-                            post_Code = 12353,
+                            number = 9,
+                            phone = 3919890127L,
+                            post_code = 12353,
                             street = "Calle 9",
-                            zone_sub = "Zona Oeste"
+                            street_number = "9135",
+                            zone = "Zona Oeste"
                         },
                         new
                         {
                             id = 10,
                             last_name = "Torres",
                             name = "Jose",
-                            post_Code = 12354,
+                            number = 10,
+                            phone = 3919890128L,
+                            post_code = 12354,
                             street = "Calle 10",
-                            zone_sub = "Zona Centro"
+                            street_number = "1046",
+                            zone = "Zona Centro"
                         },
                         new
                         {
                             id = 11,
                             last_name = "Diaz",
                             name = "Adriana",
-                            post_Code = 12355,
+                            number = 11,
+                            phone = 3919890129L,
+                            post_code = 12355,
                             street = "Calle 11",
-                            zone_sub = "Zona Norte"
+                            street_number = "1157",
+                            zone = "Zona Norte"
                         },
                         new
                         {
                             id = 12,
                             last_name = "Gutierrez",
                             name = "Fernando",
-                            post_Code = 12356,
+                            number = 12,
+                            phone = 3919890130L,
+                            post_code = 12356,
                             street = "Calle 12",
-                            zone_sub = "Zona Sur"
+                            street_number = "1268",
+                            zone = "Zona Sur"
+                        },
+                        new
+                        {
+                            id = 13,
+                            last_name = "Vazquez",
+                            name = "Sofia",
+                            number = 13,
+                            phone = 3919890131L,
+                            post_code = 12357,
+                            street = "Avenida Principal",
+                            street_number = "2435",
+                            zone = "Zona Noreste"
+                        },
+                        new
+                        {
+                            id = 14,
+                            last_name = "Fernandez",
+                            name = "Roberto",
+                            number = 14,
+                            phone = 3919890132L,
+                            post_code = 12358,
+                            street = "Boulevard Central",
+                            street_number = "789",
+                            zone = "Zona Sureste"
+                        },
+                        new
+                        {
+                            id = 15,
+                            last_name = "Ortega",
+                            name = "Carmen",
+                            number = 15,
+                            phone = 3919890133L,
+                            post_code = 12359,
+                            street = "Paseo de la Reforma",
+                            street_number = "5012",
+                            zone = "Zona Noroeste"
+                        },
+                        new
+                        {
+                            id = 16,
+                            last_name = "Morales",
+                            name = "Javier",
+                            number = 16,
+                            phone = 3919890134L,
+                            post_code = 12360,
+                            street = "Calzada de los Heroes",
+                            street_number = "1670",
+                            zone = "Zona Suroeste"
+                        },
+                        new
+                        {
+                            id = 17,
+                            last_name = "Castillo",
+                            name = "Gabriela",
+                            number = 17,
+                            phone = 3919890135L,
+                            post_code = 12361,
+                            street = "Circuito Interior",
+                            street_number = "3845",
+                            zone = "Zona Metropolitana"
+                        },
+                        new
+                        {
+                            id = 18,
+                            last_name = "Ruiz",
+                            name = "Alejandro",
+                            number = 18,
+                            phone = 3919890136L,
+                            post_code = 12362,
+                            street = "Avenida Insurgentes",
+                            street_number = "9276",
+                            zone = "Zona Histórica"
+                        },
+                        new
+                        {
+                            id = 19,
+                            last_name = "Mendoza",
+                            name = "Patricia",
+                            number = 19,
+                            phone = 3919890137L,
+                            post_code = 12363,
+                            street = "Calle del Bosque",
+                            street_number = "4523",
+                            zone = "Zona Residencial"
+                        },
+                        new
+                        {
+                            id = 20,
+                            last_name = "Vargas",
+                            name = "Ricardo",
+                            number = 20,
+                            phone = 3919890138L,
+                            post_code = 12364,
+                            street = "Avenida de las Flores",
+                            street_number = "6789",
+                            zone = "Zona Comercial"
                         });
                 });
 
@@ -185,7 +330,12 @@ namespace backend.Migrations
                     b.Property<DateTime>("Assigment_date")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
+                        .HasColumnName("date_order")
                         .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<DateTime?>("Finish_date")
+                        .HasColumnType("datetime")
+                        .HasColumnName("date_finish");
 
                     b.Property<int>("service_id")
                         .HasColumnType("int");
@@ -195,7 +345,8 @@ namespace backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)")
-                        .HasDefaultValue("Pendiente");
+                        .HasDefaultValue("Pendiente")
+                        .HasColumnName("state_order");
 
                     b.Property<int>("subscriber_id")
                         .HasColumnType("int");
@@ -213,13 +364,13 @@ namespace backend.Migrations
 
                     b.HasIndex("technician_id");
 
-                    b.ToTable("Assignments", (string)null);
+                    b.ToTable("Assignments_orders", (string)null);
 
                     b.HasData(
                         new
                         {
                             id = 1,
-                            Assigment_date = new DateTime(2022, 2, 15, 4, 49, 32, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 16, 33, 0, 0, DateTimeKind.Unspecified),
                             service_id = 1,
                             status_assigment = "Pendiente",
                             subscriber_id = 1,
@@ -228,7 +379,8 @@ namespace backend.Migrations
                         new
                         {
                             id = 2,
-                            Assigment_date = new DateTime(2020, 6, 23, 13, 37, 51, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 12, 36, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 1, 3, 55, 0, 0, DateTimeKind.Unspecified),
                             service_id = 2,
                             status_assigment = "Completado",
                             subscriber_id = 2,
@@ -237,7 +389,8 @@ namespace backend.Migrations
                         new
                         {
                             id = 3,
-                            Assigment_date = new DateTime(2020, 10, 3, 21, 29, 15, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 0, 57, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 2, 7, 15, 0, 0, DateTimeKind.Unspecified),
                             service_id = 2,
                             status_assigment = "Completado",
                             subscriber_id = 2,
@@ -246,7 +399,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 4,
-                            Assigment_date = new DateTime(2022, 11, 24, 2, 48, 34, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 14, 19, 0, 0, DateTimeKind.Unspecified),
                             service_id = 3,
                             status_assigment = "En Progreso",
                             subscriber_id = 3,
@@ -255,7 +408,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 5,
-                            Assigment_date = new DateTime(2021, 12, 19, 13, 54, 57, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 1, 36, 0, 0, DateTimeKind.Unspecified),
                             service_id = 4,
                             status_assigment = "Pendiente",
                             subscriber_id = 4,
@@ -264,7 +417,8 @@ namespace backend.Migrations
                         new
                         {
                             id = 6,
-                            Assigment_date = new DateTime(2021, 9, 9, 8, 44, 30, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 4, 48, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 2, 9, 27, 0, 0, DateTimeKind.Unspecified),
                             service_id = 5,
                             status_assigment = "Completado",
                             subscriber_id = 5,
@@ -273,7 +427,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 7,
-                            Assigment_date = new DateTime(2023, 11, 11, 9, 10, 48, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 21, 14, 0, 0, DateTimeKind.Unspecified),
                             service_id = 6,
                             status_assigment = "En Progreso",
                             subscriber_id = 6,
@@ -282,7 +436,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 8,
-                            Assigment_date = new DateTime(2021, 8, 21, 23, 49, 42, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 9, 10, 0, 0, DateTimeKind.Unspecified),
                             service_id = 7,
                             status_assigment = "Pendiente",
                             subscriber_id = 7,
@@ -291,7 +445,8 @@ namespace backend.Migrations
                         new
                         {
                             id = 9,
-                            Assigment_date = new DateTime(2022, 12, 4, 7, 35, 24, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 4, 48, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 1, 7, 4, 0, 0, DateTimeKind.Unspecified),
                             service_id = 8,
                             status_assigment = "Completado",
                             subscriber_id = 8,
@@ -300,7 +455,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 10,
-                            Assigment_date = new DateTime(2020, 3, 21, 0, 30, 23, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 7, 44, 0, 0, DateTimeKind.Unspecified),
                             service_id = 9,
                             status_assigment = "En Progreso",
                             subscriber_id = 9,
@@ -309,7 +464,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 11,
-                            Assigment_date = new DateTime(2023, 2, 25, 20, 6, 49, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 7, 10, 0, 0, DateTimeKind.Unspecified),
                             service_id = 10,
                             status_assigment = "Pendiente",
                             subscriber_id = 10,
@@ -318,7 +473,8 @@ namespace backend.Migrations
                         new
                         {
                             id = 12,
-                            Assigment_date = new DateTime(2020, 4, 18, 20, 11, 33, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 9, 40, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 2, 12, 16, 0, 0, DateTimeKind.Unspecified),
                             service_id = 11,
                             status_assigment = "Completado",
                             subscriber_id = 11,
@@ -327,7 +483,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 13,
-                            Assigment_date = new DateTime(2023, 11, 14, 22, 23, 38, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 14, 20, 0, 0, DateTimeKind.Unspecified),
                             service_id = 12,
                             status_assigment = "En Progreso",
                             subscriber_id = 12,
@@ -336,7 +492,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 14,
-                            Assigment_date = new DateTime(2021, 1, 18, 3, 37, 27, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 5, 43, 0, 0, DateTimeKind.Unspecified),
                             service_id = 13,
                             status_assigment = "Pendiente",
                             subscriber_id = 1,
@@ -345,7 +501,8 @@ namespace backend.Migrations
                         new
                         {
                             id = 15,
-                            Assigment_date = new DateTime(2020, 3, 14, 21, 45, 33, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 8, 3, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 2, 20, 20, 0, 0, DateTimeKind.Unspecified),
                             service_id = 14,
                             status_assigment = "Completado",
                             subscriber_id = 2,
@@ -354,7 +511,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 16,
-                            Assigment_date = new DateTime(2022, 2, 1, 22, 32, 6, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 22, 52, 0, 0, DateTimeKind.Unspecified),
                             service_id = 15,
                             status_assigment = "En Progreso",
                             subscriber_id = 3,
@@ -363,7 +520,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 17,
-                            Assigment_date = new DateTime(2020, 10, 13, 19, 33, 23, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 1, 28, 0, 0, DateTimeKind.Unspecified),
                             service_id = 16,
                             status_assigment = "Pendiente",
                             subscriber_id = 4,
@@ -372,7 +529,8 @@ namespace backend.Migrations
                         new
                         {
                             id = 18,
-                            Assigment_date = new DateTime(2022, 7, 30, 23, 35, 35, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 18, 12, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 2, 19, 44, 0, 0, DateTimeKind.Unspecified),
                             service_id = 17,
                             status_assigment = "Completado",
                             subscriber_id = 5,
@@ -381,7 +539,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 19,
-                            Assigment_date = new DateTime(2020, 4, 3, 10, 53, 45, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 13, 55, 0, 0, DateTimeKind.Unspecified),
                             service_id = 5,
                             status_assigment = "Pendiente",
                             subscriber_id = 6,
@@ -390,7 +548,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 20,
-                            Assigment_date = new DateTime(2020, 2, 24, 8, 51, 34, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 19, 8, 0, 0, DateTimeKind.Unspecified),
                             service_id = 2,
                             status_assigment = "En Progreso",
                             subscriber_id = 7,
@@ -399,11 +557,228 @@ namespace backend.Migrations
                         new
                         {
                             id = 21,
-                            Assigment_date = new DateTime(2021, 6, 10, 10, 45, 16, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 19, 31, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 2, 17, 44, 0, 0, DateTimeKind.Unspecified),
                             service_id = 1,
                             status_assigment = "Completado",
                             subscriber_id = 8,
                             technician_id = 8
+                        });
+                });
+
+            modelBuilder.Entity("backend.Models.Bonus_tab", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("bonus")
+                        .HasColumnType("int");
+
+                    b.Property<int>("max_range")
+                        .HasColumnType("int");
+
+                    b.Property<int>("min_range")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Bonus_tabs", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            bonus = 0,
+                            max_range = 80,
+                            min_range = 0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            bonus = 300,
+                            max_range = 150,
+                            min_range = 81
+                        },
+                        new
+                        {
+                            Id = 3,
+                            bonus = 500,
+                            max_range = 210,
+                            min_range = 151
+                        });
+                });
+
+            modelBuilder.Entity("backend.Models.JobsCatalog", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<string>("description")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("duration")
+                        .HasColumnType("int");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("points")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("name");
+
+                    b.HasIndex("points");
+
+                    b.ToTable("jobs_catalog", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            description = "Instalación y activación de línea telefónica residencial.",
+                            duration = 2,
+                            name = "Instalación de Línea Telefónica",
+                            points = 5
+                        },
+                        new
+                        {
+                            id = 2,
+                            description = "Resolución de problemas en la línea telefónica.",
+                            duration = 1,
+                            name = "Reparación de Línea Telefónica",
+                            points = 4
+                        },
+                        new
+                        {
+                            id = 3,
+                            description = "Cambio de número telefónico en la misma línea.",
+                            duration = 1,
+                            name = "Cambio de Número Telefónico",
+                            points = 3
+                        },
+                        new
+                        {
+                            id = 4,
+                            description = "Configuración de funciones en teléfono fijo.",
+                            duration = 1,
+                            name = "Configuración de Teléfono Fijo",
+                            points = 2
+                        },
+                        new
+                        {
+                            id = 5,
+                            description = "Instalación de modem y activación del servicio de internet.",
+                            duration = 3,
+                            name = "Instalación de Internet",
+                            points = 8
+                        },
+                        new
+                        {
+                            id = 6,
+                            description = "Revisión y mantenimiento preventivo del equipo de internet.",
+                            duration = 1,
+                            name = "Mantenimiento de Internet",
+                            points = 3
+                        },
+                        new
+                        {
+                            id = 7,
+                            description = "Configuración de la red Wi-Fi y dispositivos conectados.",
+                            duration = 2,
+                            name = "Configuración de Red Wi-Fi",
+                            points = 6
+                        },
+                        new
+                        {
+                            id = 8,
+                            description = "Cambio de equipo por actualización o mal funcionamiento.",
+                            duration = 1,
+                            name = "Cambio de Modem",
+                            points = 4
+                        },
+                        new
+                        {
+                            id = 9,
+                            description = "Asistencia remota o en sitio para problemas de internet.",
+                            duration = 1,
+                            name = "Soporte Técnico de Internet",
+                            points = 3
+                        },
+                        new
+                        {
+                            id = 10,
+                            description = "Instalación de decodificador y activación de canales básicos.",
+                            duration = 2,
+                            name = "Instalación de TV Básica",
+                            points = 5
+                        },
+                        new
+                        {
+                            id = 11,
+                            description = "Instalación de decodificador y activación de canales premium.",
+                            duration = 3,
+                            name = "Instalación de TV Premium",
+                            points = 8
+                        },
+                        new
+                        {
+                            id = 12,
+                            description = "Resolución de problemas con la señal de televisión.",
+                            duration = 1,
+                            name = "Reparación de Señal de TV",
+                            points = 4
+                        },
+                        new
+                        {
+                            id = 13,
+                            description = "Cambio de equipo por actualización o mal funcionamiento.",
+                            duration = 1,
+                            name = "Cambio de Decodificador",
+                            points = 4
+                        },
+                        new
+                        {
+                            id = 14,
+                            description = "Configuración y personalización de canales de TV.",
+                            duration = 1,
+                            name = "Configuración de Canales",
+                            points = 3
+                        },
+                        new
+                        {
+                            id = 15,
+                            description = "Instalación de servicio de telefonía, internet y TV.",
+                            duration = 4,
+                            name = "Paquete Triple Play",
+                            points = 12
+                        },
+                        new
+                        {
+                            id = 16,
+                            description = "Actualización de servicios combinados de telefonía, internet y TV.",
+                            duration = 2,
+                            name = "Actualización de Servicios",
+                            points = 7
+                        },
+                        new
+                        {
+                            id = 17,
+                            description = "Asistencia técnica para problemas en servicios combinados.",
+                            duration = 2,
+                            name = "Soporte Integral de Servicios",
+                            points = 5
                         });
                 });
 
@@ -415,31 +790,12 @@ namespace backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("branch_office")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
                     b.Property<int>("quadrille_number")
                         .HasColumnType("int");
-
-                    b.Property<string>("region")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("state_quadrille")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("quadrille_number");
-
-                    b.HasIndex("region");
-
-                    b.HasIndex("state_quadrille");
 
                     b.ToTable("Quadrille", (string)null);
 
@@ -447,269 +803,52 @@ namespace backend.Migrations
                         new
                         {
                             Id = 1,
-                            branch_office = "Sucursal 1",
-                            quadrille_number = 1001,
-                            region = "Norte",
-                            state_quadrille = "Estado 1"
+                            quadrille_number = 1001
                         },
                         new
                         {
                             Id = 2,
-                            branch_office = "Sucursal 2",
-                            quadrille_number = 1002,
-                            region = "Sur",
-                            state_quadrille = "Estado 2"
+                            quadrille_number = 1002
                         },
                         new
                         {
                             Id = 3,
-                            branch_office = "Sucursal 3",
-                            quadrille_number = 1003,
-                            region = "Este",
-                            state_quadrille = "Estado 3"
+                            quadrille_number = 1003
                         },
                         new
                         {
                             Id = 4,
-                            branch_office = "Sucursal 4",
-                            quadrille_number = 1004,
-                            region = "Oeste",
-                            state_quadrille = "Estado 4"
+                            quadrille_number = 1004
                         },
                         new
                         {
                             Id = 5,
-                            branch_office = "Sucursal 5",
-                            quadrille_number = 1005,
-                            region = "Centro",
-                            state_quadrille = "Estado 5"
+                            quadrille_number = 1005
                         },
                         new
                         {
                             Id = 6,
-                            branch_office = "Sucursal 6",
-                            quadrille_number = 1006,
-                            region = "Noroeste",
-                            state_quadrille = "Estado 6"
+                            quadrille_number = 1006
                         },
                         new
                         {
                             Id = 7,
-                            branch_office = "Sucursal 7",
-                            quadrille_number = 1007,
-                            region = "Sureste",
-                            state_quadrille = "Estado 7"
+                            quadrille_number = 1007
                         },
                         new
                         {
                             Id = 8,
-                            branch_office = "Sucursal 8",
-                            quadrille_number = 1008,
-                            region = "Noreste",
-                            state_quadrille = "Estado 8"
+                            quadrille_number = 1008
                         },
                         new
                         {
                             Id = 9,
-                            branch_office = "Sucursal 9",
-                            quadrille_number = 1009,
-                            region = "Suroeste",
-                            state_quadrille = "Estado 9"
+                            quadrille_number = 1009
                         },
                         new
                         {
                             Id = 10,
-                            branch_office = "Sucursal 10",
-                            quadrille_number = 1010,
-                            region = "Nororiente",
-                            state_quadrille = "Estado 10"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            branch_office = "Sucursal 11",
-                            quadrille_number = 1011,
-                            region = "Suroriente",
-                            state_quadrille = "Estado 11"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            branch_office = "Sucursal 12",
-                            quadrille_number = 1012,
-                            region = "Noroccidente",
-                            state_quadrille = "Estado 12"
-                        });
-                });
-
-            modelBuilder.Entity("backend.Models.ServiceCatalog", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
-
-                    b.Property<string>("description_service")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<int>("duration")
-                        .HasColumnType("int");
-
-                    b.Property<int>("points")
-                        .HasColumnType("int");
-
-                    b.Property<string>("service_name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("points");
-
-                    b.HasIndex("service_name");
-
-                    b.ToTable("ServiceCatalog", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            id = 1,
-                            description_service = "Instalación y activación de línea telefónica residencial.",
-                            duration = 2,
-                            points = 5,
-                            service_name = "Instalación de Línea Telefónica"
-                        },
-                        new
-                        {
-                            id = 2,
-                            description_service = "Resolución de problemas en la línea telefónica.",
-                            duration = 1,
-                            points = 4,
-                            service_name = "Reparación de Línea Telefónica"
-                        },
-                        new
-                        {
-                            id = 3,
-                            description_service = "Cambio de número telefónico en la misma línea.",
-                            duration = 1,
-                            points = 3,
-                            service_name = "Cambio de Número Telefónico"
-                        },
-                        new
-                        {
-                            id = 4,
-                            description_service = "Configuración de funciones en teléfono fijo.",
-                            duration = 1,
-                            points = 2,
-                            service_name = "Configuración de Teléfono Fijo"
-                        },
-                        new
-                        {
-                            id = 5,
-                            description_service = "Instalación de modem y activación del servicio de internet.",
-                            duration = 3,
-                            points = 8,
-                            service_name = "Instalación de Internet"
-                        },
-                        new
-                        {
-                            id = 6,
-                            description_service = "Revisión y mantenimiento preventivo del equipo de internet.",
-                            duration = 1,
-                            points = 3,
-                            service_name = "Mantenimiento de Internet"
-                        },
-                        new
-                        {
-                            id = 7,
-                            description_service = "Configuración de la red Wi-Fi y dispositivos conectados.",
-                            duration = 2,
-                            points = 6,
-                            service_name = "Configuración de Red Wi-Fi"
-                        },
-                        new
-                        {
-                            id = 8,
-                            description_service = "Cambio de equipo por actualización o mal funcionamiento.",
-                            duration = 1,
-                            points = 4,
-                            service_name = "Cambio de Modem"
-                        },
-                        new
-                        {
-                            id = 9,
-                            description_service = "Asistencia remota o en sitio para problemas de internet.",
-                            duration = 1,
-                            points = 3,
-                            service_name = "Soporte Técnico de Internet"
-                        },
-                        new
-                        {
-                            id = 10,
-                            description_service = "Instalación de decodificador y activación de canales básicos.",
-                            duration = 2,
-                            points = 5,
-                            service_name = "Instalación de TV Básica"
-                        },
-                        new
-                        {
-                            id = 11,
-                            description_service = "Instalación de decodificador y activación de canales premium.",
-                            duration = 3,
-                            points = 8,
-                            service_name = "Instalación de TV Premium"
-                        },
-                        new
-                        {
-                            id = 12,
-                            description_service = "Resolución de problemas con la señal de televisión.",
-                            duration = 1,
-                            points = 4,
-                            service_name = "Reparación de Señal de TV"
-                        },
-                        new
-                        {
-                            id = 13,
-                            description_service = "Cambio de equipo por actualización o mal funcionamiento.",
-                            duration = 1,
-                            points = 4,
-                            service_name = "Cambio de Decodificador"
-                        },
-                        new
-                        {
-                            id = 14,
-                            description_service = "Configuración y personalización de canales de TV.",
-                            duration = 1,
-                            points = 3,
-                            service_name = "Configuración de Canales"
-                        },
-                        new
-                        {
-                            id = 15,
-                            description_service = "Instalación de servicio de telefonía, internet y TV.",
-                            duration = 4,
-                            points = 12,
-                            service_name = "Paquete Triple Play"
-                        },
-                        new
-                        {
-                            id = 16,
-                            description_service = "Actualización de servicios combinados de telefonía, internet y TV.",
-                            duration = 2,
-                            points = 7,
-                            service_name = "Actualización de Servicios"
-                        },
-                        new
-                        {
-                            id = 17,
-                            description_service = "Asistencia técnica para problemas en servicios combinados.",
-                            duration = 2,
-                            points = 5,
-                            service_name = "Soporte Integral de Servicios"
+                            quadrille_number = 1010
                         });
                 });
 
@@ -734,6 +873,9 @@ namespace backend.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<long>("phone")
+                        .HasColumnType("bigint");
+
                     b.Property<int?>("quadrille_id")
                         .HasColumnType("int");
 
@@ -754,6 +896,7 @@ namespace backend.Migrations
                             employee_number = 10001,
                             last_name = "Gomez",
                             name = "Luis",
+                            phone = 3310194098L,
                             quadrille_id = 1
                         },
                         new
@@ -762,7 +905,8 @@ namespace backend.Migrations
                             employee_number = 10002,
                             last_name = "Rodriguez",
                             name = "Laura",
-                            quadrille_id = 2
+                            phone = 3310194099L,
+                            quadrille_id = 1
                         },
                         new
                         {
@@ -770,7 +914,8 @@ namespace backend.Migrations
                             employee_number = 10003,
                             last_name = "Perez",
                             name = "Carlos",
-                            quadrille_id = 3
+                            phone = 3310194100L,
+                            quadrille_id = 2
                         },
                         new
                         {
@@ -778,7 +923,8 @@ namespace backend.Migrations
                             employee_number = 10004,
                             last_name = "Ramirez",
                             name = "Elena",
-                            quadrille_id = 4
+                            phone = 3310194101L,
+                            quadrille_id = 2
                         },
                         new
                         {
@@ -786,7 +932,8 @@ namespace backend.Migrations
                             employee_number = 10005,
                             last_name = "Sanchez",
                             name = "Miguel",
-                            quadrille_id = 5
+                            phone = 3310194102L,
+                            quadrille_id = 3
                         },
                         new
                         {
@@ -794,7 +941,8 @@ namespace backend.Migrations
                             employee_number = 10006,
                             last_name = "Torres",
                             name = "Jose",
-                            quadrille_id = 6
+                            phone = 3310194103L,
+                            quadrille_id = 3
                         },
                         new
                         {
@@ -802,7 +950,8 @@ namespace backend.Migrations
                             employee_number = 10007,
                             last_name = "Diaz",
                             name = "Adriana",
-                            quadrille_id = 7
+                            phone = 3310194104L,
+                            quadrille_id = 4
                         },
                         new
                         {
@@ -810,7 +959,8 @@ namespace backend.Migrations
                             employee_number = 10008,
                             last_name = "Gutierrez",
                             name = "Fernando",
-                            quadrille_id = 8
+                            phone = 3310194105L,
+                            quadrille_id = 4
                         },
                         new
                         {
@@ -818,7 +968,8 @@ namespace backend.Migrations
                             employee_number = 10009,
                             last_name = "Mendez",
                             name = "Sofia",
-                            quadrille_id = 9
+                            phone = 3310194106L,
+                            quadrille_id = 5
                         },
                         new
                         {
@@ -826,7 +977,8 @@ namespace backend.Migrations
                             employee_number = 10010,
                             last_name = "Ortega",
                             name = "Ricardo",
-                            quadrille_id = 10
+                            phone = 3310194107L,
+                            quadrille_id = 5
                         },
                         new
                         {
@@ -834,7 +986,8 @@ namespace backend.Migrations
                             employee_number = 10011,
                             last_name = "Martinez",
                             name = "Paola",
-                            quadrille_id = 11
+                            phone = 3310194108L,
+                            quadrille_id = 6
                         },
                         new
                         {
@@ -842,13 +995,86 @@ namespace backend.Migrations
                             employee_number = 10012,
                             last_name = "Gonzalez",
                             name = "David",
-                            quadrille_id = 12
+                            phone = 3310194109L,
+                            quadrille_id = 6
+                        },
+                        new
+                        {
+                            id = 13,
+                            employee_number = 10013,
+                            last_name = "Vargas",
+                            name = "Ana",
+                            phone = 3310194110L,
+                            quadrille_id = 7
+                        },
+                        new
+                        {
+                            id = 14,
+                            employee_number = 10014,
+                            last_name = "Castro",
+                            name = "Javier",
+                            phone = 3310194111L,
+                            quadrille_id = 7
+                        },
+                        new
+                        {
+                            id = 15,
+                            employee_number = 10015,
+                            last_name = "Flores",
+                            name = "Mariana",
+                            phone = 3310194112L,
+                            quadrille_id = 8
+                        },
+                        new
+                        {
+                            id = 16,
+                            employee_number = 10016,
+                            last_name = "Rojas",
+                            name = "Gabriel",
+                            phone = 3310194113L,
+                            quadrille_id = 8
+                        },
+                        new
+                        {
+                            id = 17,
+                            employee_number = 10017,
+                            last_name = "Herrera",
+                            name = "Valentina",
+                            phone = 3310194114L,
+                            quadrille_id = 9
+                        },
+                        new
+                        {
+                            id = 18,
+                            employee_number = 10018,
+                            last_name = "Morales",
+                            name = "Alejandro",
+                            phone = 3310194115L,
+                            quadrille_id = 9
+                        },
+                        new
+                        {
+                            id = 19,
+                            employee_number = 10019,
+                            last_name = "Jimenez",
+                            name = "Isabella",
+                            phone = 3310194116L,
+                            quadrille_id = 10
+                        },
+                        new
+                        {
+                            id = 20,
+                            employee_number = 10020,
+                            last_name = "Acosta",
+                            name = "Daniel",
+                            phone = 3310194117L,
+                            quadrille_id = 10
                         });
                 });
 
             modelBuilder.Entity("backend.Models.Assignment", b =>
                 {
-                    b.HasOne("backend.Models.ServiceCatalog", "ServiceCatalog")
+                    b.HasOne("backend.Models.JobsCatalog", "JobsCatalog")
                         .WithMany("Assignments")
                         .HasForeignKey("service_id")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -866,7 +1092,7 @@ namespace backend.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ServiceCatalog");
+                    b.Navigation("JobsCatalog");
 
                     b.Navigation("Subscriptor");
 
@@ -887,14 +1113,14 @@ namespace backend.Migrations
                     b.Navigation("Assignments");
                 });
 
+            modelBuilder.Entity("backend.Models.JobsCatalog", b =>
+                {
+                    b.Navigation("Assignments");
+                });
+
             modelBuilder.Entity("backend.Models.Quadrille", b =>
                 {
                     b.Navigation("Technicians");
-                });
-
-            modelBuilder.Entity("backend.Models.ServiceCatalog", b =>
-                {
-                    b.Navigation("Assignments");
                 });
 
             modelBuilder.Entity("backend.Models.Technician", b =>
