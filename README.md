@@ -24,7 +24,7 @@ hackathon-proyecto/
 ├── docs/                         # Documentación adicional del proyecto
 │   ├── frontend-docs/            # Documentación específica del frontend
 │   ├── backend-docs/             # Documentación específica del backend
-│   └── architecture.md           # Descripción de la arquitectura del proyecto
+│   └── README.md                 # Descripción de la arquitectura del proyecto
 │
 ├── docker-compose.yml            # Configuración para contenedores en local (opcional)
 ├── .gitignore                    # Archivos y carpetas a ignorar por Git
@@ -49,7 +49,7 @@ La arquitectura del sistema está diseñada siguiendo el patrón de **arquitectu
 - El frontend se comunica con el backend a través de solicitudes HTTP, utilizando métodos como GET, POST, PUT y DELETE para realizar operaciones CRUD (Crear, Leer, Actualizar, Borrar) en los datos.
 
 ### 5. Diagrama de Arquitectura
-- Para una mejor visualización de la arquitectura del sistema, consulta el archivo `architecture.md` en la carpeta `docs`, donde se incluye un diagrama que ilustra la relación entre los diferentes componentes del sistema.
+- Para una mejor visualización de la arquitectura del sistema, consulta el archivo `README.md` en la carpeta `docs`, donde se incluye un diagrama que ilustra la relación entre los diferentes componentes del sistema.
 
 Este enfoque modular no solo mejora la calidad del software, sino que también permite una rápida adaptación a cambios en los requisitos del negocio.
 
