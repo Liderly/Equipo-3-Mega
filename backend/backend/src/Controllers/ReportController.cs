@@ -2,6 +2,7 @@
 using backend.src.DTO;
 using backend.src.Services;
 using backend.Models;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Backend.Controllers
 {
@@ -13,9 +14,11 @@ namespace Backend.Controllers
     public class ReportController : ControllerBase
     {
         private readonly IBonusReportService _report_service;
-        public ReportController(IBonusReportService report_service)
+        private readonly ICacheService _cacheService;
+        public ReportController(IBonusReportService report_service, ICacheService cacheService)
         {
             _report_service = report_service;
+            _cacheService = cacheService;
         }
         /// <summary>
         /// Obtiene una lista paginada de la informacion para los bonos de la semana en curso Lunes-Sabado.
@@ -38,8 +41,16 @@ namespace Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<BonusReport>> GetReportList([FromQuery] PaginateProps props, [FromQuery] int NumTec) 
         {
+            var cacheKey = $"Report_page_{props.PageNumber}";
+            var EmpReport = await _cacheService.GetCache<BonusReport>(cacheKey);
+            if (EmpReport == null) 
+            {
             var report = await _report_service.GetBonusReport(props,NumTec);
-            return Ok(report);
+            await _cacheService.SetCache<BonusReport>(report, cacheKey);
+                return Ok(report);
+            }
+                
+            return Ok(EmpReport);
         }
 
         /// <summary>
@@ -69,19 +80,20 @@ namespace Backend.Controllers
         /// Obtener un listado de los bonos de todos los tecnicos.
         /// </summary>
         /// <returns>Detalles de bono de tecnico.</returns>
-        /// <remarks>
-        /// Ejemplo de solicitud:
-        ///
-        ///     GET /api/Report/1002
-        ///
-        /// </remarks>
 
         [HttpGet]
         [Route("All")]
         public async Task<ActionResult<BonusReport>> GetFullReport()
         {
-            var report = await _report_service.GetFullReport();
-            return Ok(report);
+            var cacheKey = $"Full_Report";
+            var EmpReport = _cacheService.GetCache<BonusReport>(cacheKey);
+            if (EmpReport == null)
+            {
+                var report = await _report_service.GetFullReport();
+                await _cacheService.SetCache<BonusReport>(report, cacheKey);
+                return Ok(report);
+            }
+            return Ok(EmpReport);
         }
     }
 }
