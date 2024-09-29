@@ -111,24 +111,46 @@ npm star
 `
 La aplicación estará disponible en http://localhost:4200.
 
-### Backend
-1. Clona el repositorio
-`
-git clone https://github.com/Liderly/Equipo-3-Mega.git
-cd backend
-`
+Aquí tienes el contenido traducido al español:
+
+# Configuración del Backend
+
+Sigue estos pasos para configurar y ejecutar el backend:
+
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/Liderly/Equipo-3-Mega.git
+   cd backend
+   ```
+
 2. Restaura las dependencias:
-`
-dotnet restore
-`
+   ```bash
+   dotnet restore
+   ```
+
 3. Compila el proyecto:
-`
-dotnet build
-`
-4. Ejecuta la API
-`
-dotnet run
-`
+   ```bash
+   dotnet build
+   ```
+
+4. Configura y ejecuta el contenedor de Redis:
+   1. Crea un volumen para la persistencia de datos:
+      ```bash
+      docker volume create redis-data
+      ```
+   2. Ejecuta el contenedor de Redis con el volumen creado:
+      ```bash
+      docker run -d --name redis-container -v redis-data:/data -p 6379:6379 redis redis-server --appendonly yes
+      ```
+
+5. Ejecuta la API:
+   ```bash
+   dotnet run
+   ```
+
+## Notas
+- Asegúrate de tener Docker instalado y en funcionamiento para el paso 4.
+- La API estará disponible en `http://localhost:5000` por defecto (o en otro puerto si se configuró de manera diferente).
 
 ### Documentación API
 
