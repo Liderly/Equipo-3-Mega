@@ -36,7 +36,7 @@ export class RegistrosComponent implements OnInit {
   }; // Aquí almacenaremos los datos
   datafields:string[] = ["Id","Trabajador","Numero de cliente","Tareas","Estatus","Fecha de tarea","Puntos obtenidos"];
   showSideNav: boolean = false;
-  ngOnInit(): void {
+ ngOnInit(): void {
     // Datos simulados para prueba
     this.fetchData();
   }
@@ -99,7 +99,6 @@ searchTech($event: any){
     this.bonusService.GetBonusReport(1,parseInt(this.searchTerm)).subscribe((data: BonusListResponse) => {
       this.data = data;
     });
-
   }
 }
 
@@ -213,4 +212,3 @@ searchTech($event: any){
     return await this.bonusService.GetAllReports();
   }
 }
-
