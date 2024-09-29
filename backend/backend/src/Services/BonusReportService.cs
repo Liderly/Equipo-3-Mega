@@ -69,6 +69,28 @@ namespace backend.src.Services
             .FirstAsync();
             return ParseTechInfo(tech);
         }
+
+        public async Task<BonusReport> GetFullReport()
+        {
+            var report = new BonusReport();
+            var technicianData = await _context.Technicians
+            .Include(t => t.Quadrille)
+            .Include(t => t.Assignments.Where(a =>
+                a.Assigment_date >= currentWeekMonday &&
+                a.Assigment_date <= currentWeekSaturday))
+                    .ThenInclude(a => a.Subscriptor)
+            .Include(t => t.Assignments.Where(a =>
+                a.Assigment_date >= currentWeekMonday &&
+                a.Assigment_date <= currentWeekSaturday))
+                    .ThenInclude(a => a.JobsCatalog)
+            .ToListAsync();
+
+            List<TechInfo> ParsedTech = technicianData.Select(item => ParseTechInfo(item)).ToList();
+
+            report.technitians = ParsedTech;
+            report.Total_Technicians = await _context.Technicians.CountAsync();
+            return report;
+        }
         private TechInfo ParseTechInfo(Technician tech)
         {
             int TotalPoints = tech.Assignments.Sum(x =>

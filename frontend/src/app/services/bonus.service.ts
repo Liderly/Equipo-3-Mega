@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { firstValueFrom, map, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { BonusListResponse } from '../interfaces/techniciansListResponse.interface';
+import { BonusListResponse, Technitian } from '../interfaces/techniciansListResponse.interface';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -23,4 +25,11 @@ export class BonusService {
       return this.http.get<BonusListResponse>(url);
     }
   }
+  GetAllReports(): Promise<Technitian[]> {
+    const url = `${this.apiUrl}/All`;
+    return firstValueFrom(this.http.get<BonusListResponse>(url).pipe(
+      map((response: BonusListResponse) => response.technitians)
+    ));
+  }
+
 }

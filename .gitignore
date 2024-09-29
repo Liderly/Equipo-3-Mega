@@ -3,3 +3,4 @@
 backend/backend/bin/*
 backend/backend/obj/*
 /backend/backend/appsettings.Development.json
+node_modules/

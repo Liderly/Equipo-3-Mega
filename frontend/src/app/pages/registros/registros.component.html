@@ -26,6 +26,8 @@ groupRowsBy="numTech"
         style=" background-color: red;
         padding: 7px 10px;
         color: white;"
+        (click)="generatePDF()"
+
         ></button>
         </div>
         <h1>{{ currentWeekMonday | date:'dd/MM/yyyy' }} - {{ currentWeekSaturday | date:'dd/MM/yyyy' }}</h1>
@@ -45,9 +47,6 @@ groupRowsBy="numTech"
           </div>
           <p-button icon="pi pi-refresh" (onClick)="resetTable()" [rounded]="true" />
         </div>
-
-
-
       </div>
   </ng-template>
         <ng-template pTemplate="header">
