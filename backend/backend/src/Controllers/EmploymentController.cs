@@ -10,10 +10,12 @@ namespace backend.Controllers
     public class EmployeeController : ControllerBase
     {
         private readonly IEmploymentService _employmentService;
+        private readonly ICacheService _cacheService;
 
-        public EmployeeController(IEmploymentService employmentService)
+        public EmployeeController(IEmploymentService employmentService, ICacheService cacheService)
         {
             _employmentService = employmentService;
+            _cacheService = cacheService;
         }
         /// <summary>
         /// Obtiene la lista de todos los técnicos y empleados, con opciones de paginación.
@@ -24,15 +26,27 @@ namespace backend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<EmploymentDto>>> GetEmployments([FromQuery] PaginateProps props)
         {
-            var employments = await _employmentService.GetAllEmployments(props);
+            string cacheKey = $"Employments_page_{props.PageNumber}";
+            IEnumerable<EmploymentDto> emp = await _cacheService.GetCache<IEnumerable<EmploymentDto>>(cacheKey);
+            if (emp == null)
+            {
+                var employments = await _employmentService.GetAllEmployments(props);
+            
+            if (employments != null && employments.Any())
+            {
+                await _cacheService.SetCache<IEnumerable<EmploymentDto>>(employments, cacheKey);
+            }
             return Ok(employments);
         }
-        /// <summary>
-        /// Obtiene un empleo por su ID.
-        /// </summary>
-        /// <param name="id">ID del empleo a obtener.</param>
-        /// <returns>El empleo con el ID especificado.</returns>
-        [HttpGet("{id}")]
+
+             return Ok(emp);
+    }
+    /// <summary>
+    /// Obtiene un empleo por su ID.
+    /// </summary>
+    /// <param name="id">ID del empleo a obtener.</param>
+    /// <returns>El empleo con el ID especificado.</returns>
+    [HttpGet("{id}")]
         public async Task<ActionResult<EmploymentDto>> GetEmployment(int id)
         {
             var employment = await _employmentService.GetEmploymentById(id);
