@@ -1,93 +1,159 @@
 ### Equipo 3 MEGAWINNERS
 
-## Descripción de la problemática
-Dentro de la empresa se cuenta con diferentes procesos de pago de acuerdo a las áreas en las que se encuentra, una de ellas es el área de técnico y el proceso de pago de puntos.
-El pago de puntos se realiza a cada técnico de manera mensual (cada quince días), este pago de puntos se realiza de acuerdo al nivel de dificultad que tenga la tarea, por ejemplo:
-- Instalación de acomida --> 5 puntos
-- Instalación de equipo --> 2 puntos
+## Descripción de la Problemática
 
-La cantidad de puntos reunida por cada técnico es comparada con una tabla de puntos la cual es la siguiente:
-- De 0 a 8 = 0 pesos
-- De 81 a 150 = 300 pesos
-- De 151 a 210 = 500 pesos
-- De 211 en adelante = 650 pesos
+En la empresa, existen diferentes procesos de pago dependiendo de las áreas, siendo uno de los más relevantes el proceso de pago de puntos en el área técnica. Este pago se realiza mensualmente (cada quince días) y varía según el nivel de dificultad de cada tarea. Por ejemplo:
 
-Por ejemplo: Si un técnico realiza 15 servicios de instalación de acomida y 12 de instalación de equipos, estaría acumulando por:
-- Servicio de instalación: 15 servicios * 5 puntos = 75 puntos
-- Instalación de equipos: 12 instalaciones * 2 puntos = 24 puntos
-Lo cual nos daría el total de 99 puntos y le correspondería un total de 300 pesos de bono.
+- **Instalación de acomida**: 5 puntos
+- **Instalación de equipo**: 2 puntos
 
-Al consultar los bonos correspondientes a cada técnico es necesario que se reflejen reportes los cuales contengan de manera detallada cada una de las órdenes realizadas con detalles como tipo de trabajo, puntos, fecha, importe, etc.
+La cantidad de puntos acumulada por cada técnico se compara con una tabla de bonos:
 
-De acuerdo a lo anterior se requiere desarrollar un sistema de generación de reportes automatizado que visualize los puntos generados (por ende el pago correspondiente) a cada técnico y pueda ser consultado en cualquier momento por quien lo requiera.
+| Rango de Puntos | Importe |
+|------------------|---------|
+| 0 a 80           | 0 pesos |
+| 81 a 150         | 300 pesos |
+| 151 a 210        | 500 pesos |
+| 211 en adelante  | 650 pesos |
 
-## Requerimientos técnicos
-Para la realización del frontend se utilizaron las siguientes tecnologías:
-- Angular v 17
-Por otro lado, para el backend se utilizaron las siguientes:
--- .NET version 8.0
-- Entity Framework Core -> versión: 8.0.7
-- Entity Framework Core.SqlServer -> versión: 8.0.7
-- Microsoft.EntityFrameworkCore.Tools -> versión: 8.0.7
-Estos pueden ser añadidos  mediante los comandos `dotnet add package [package name]` o si estas utilizando Visual Studio puedee añadirlos usando `Nuget package manager`.
+### Ejemplo de Cálculo
 
-Para la elaboración de la base de datos se utilizó SQL SERVER 2019.
+Si un técnico realiza 15 servicios de instalación de acomida y 12 de instalación de equipos, acumula:
+
+- **Servicio de instalación**: 15 servicios * 5 puntos = 75 puntos
+- **Instalación de equipos**: 12 instalaciones * 2 puntos = 24 puntos
+
+**Total de puntos**: 75 + 24 = 99 puntos, lo que le correspondería un bono de **300 pesos**.
+
+Para facilitar la consulta de bonos, es necesario generar reportes detallados que incluyan información sobre cada orden, como tipo de trabajo, puntos, fecha, importe, entre otros.
+
+Por lo tanto, se requiere desarrollar un sistema automatizado que visualice los puntos generados y el pago correspondiente para cada técnico, accesible en cualquier momento.
+
+## Requerimientos Técnicos
+
+### Frontend
+
+- **Angular**: v17
+
+### Backend
+
+- **.NET**: v8.0
+- **Entity Framework Core**: v8.0.7
+- **Entity Framework Core.SqlServer**: v8.0.7
+- **Microsoft.EntityFrameworkCore.Tools**: v8.0.7
+  
+Puedes añadir estos paquetes mediante el comando:
+```bash
+dotnet add package [package name]
+```
+Si utilizas Visual Studio, puedes añadirlos usando el NuGet Package Manager.
+
+- Base de Datos SQL Server: v2019
 
 ## Objetivos
-- General
-Realizar un reporte automatizado para el pago de puntos, el cual contenga por lo menos lo siguiente:
-  - Trabajo realizado
-  - Puntos generados
-  - Suscriptor
-  - Fecha
-  - Total de puntos obtenidos
-  - Importe del bono a pagar
 
-- Específicos
- - Elaborar una base de datos adecuada para desarrollar el proyecto.
- - Diseñar una interfaz atractiva e intuitiva para el usuario que le permita desarrollar funciones como filtrar por técnico (PREGUNTAR FILTROS).
- - Diseñar y elaborar una API REST con .NET de manera adecuada y rápida, y consumirla en nuestro frontend.
+### General
+
+Desarrollar un reporte automatizado para el pago de puntos que incluya:
+- Trabajo realizado
+- Puntos generados
+- Suscriptor
+- Fecha
+- Total de puntos obtenidos
+- Importe del bono a pagar
+
+### Específicos
+
+- Diseñar una base de datos adecuada para el proyecto.
+- Crear una interfaz de usuario atractiva e intuitiva que permita filtrar por técnico.
+- Desarrollar y consumir una API REST con .NET de manera eficiente.
 
 ## Alcance del proyecto
-Este proyecto consiste en la creación de una plataforma que permita a los usuarios consultar la cantidad de puntos, incluída la cantidad a pagar de bono al técnico correspondiente, así como la generación de reportes con campos que especifican lo siguiente:
-  - Trabajo realizado
-  - Puntos generados
-  - Suscriptor
-  - Fecha
-  - Total de puntos obtenidos
-  - Importe del bono a pagar
-Así como la filtración de datos con criterios específicos, filtración de tareas completadas.
-No se encuentra dentro del alcance del proyecto:
- - Creación de nuevas órdenes y actualización de puntos conforme se añaden nuevas órdenes.
+
+Este proyecto consiste en la creación de una plataforma que permita a los usuarios:
+- Consultar la cantidad de puntos y el bono a pagar de cada técnico.
+- Generar reportes detallados que especifiquen:
+  * Trabajo realizado
+  * Puntos generados
+  * Suscriptor
+  * Fecha
+  * Total de puntos obtenidos
+  * Importe del bono a pagar
+- Filtrar datos según criterios específicos, incluyendo la visualización de tareas completadas.
+
+*** Excepciones
+- No se incluye en el alcance del proyecto la creación de nuevas órdenes o la actualización de puntos a medida que se añaden nuevas órdenes.
 
 ## Descripción de la solución
-La solución propuesta para la problemática dada es el desarrollo de una plataforma en la cual se pueda consultar y visualizar de manera rápida, mediante reportes, la cantidad de puntos generados así como del monto a otorgar a cada técnico de acuerdo a los trabajos realizados de manera semanal en un desglose que contenga campos como los siguientes:
-  - Trabajo realizado
-  - Puntos generados
-  - Suscriptor
-  - Fecha
-  - Total de puntos obtenidos
-  - Importe del bono a pagar
+La solución propuesta consiste en una plataforma que permita consultar y visualizar rápidamente, a través de reportes, la cantidad de puntos generados y el monto a otorgar a cada técnico, detallando los trabajos realizados. La información se presentará en formato de tabla con los siguientes campos:
 
-Lo anterior visualizado a manera de tabla.
+- Trabajo realizado
+- Puntos generados
+- Suscriptor
+- Fecha
+- Total de puntos obtenidos
+- Importe del bono a pagar
 
 ## ¿Cómo utilizar este repositorio?
-1. Obtener la url del repositorio: Hacer clic en el botón de code y copiar la URL del repositorio.
-2. Clonar el repositorio: abrir la terminar y ejecutar el cimando `git clone`
-3. Crear una base de datos en SQL Server en la cual añadas las tablas necesarias para la funcionalidad (consultar archivo SQLQueryHackaton.sql)
-4. Una vez creada la base de datos, ahora en tu archivo `appsettings.json` crea tu ConnectionStrings de la siguiente menra y cambia los datos necesarios para pode rconectarte a tu propia base de datos:
-- Ejemplo:
-- ` "ConnectionStrings": {
+
+1. **Obtener la URL del Repositorio**: Haz clic en el botón de "Code" y copia la URL del repositorio.
+   
+2. **Clonar el Repositorio**: Abre la terminal y ejecuta el comando:
+   ```bash
+   git clone <URL_DEL_REPOSITORIO>
+3. Crear la Base de Datos: En SQL Server, crea una base de datos e incluye las tablas necesarias (consulta el archivo SQLQueryHackaton.sql).
+4. Configurar la Conexión: En el archivo appsettings.json, añade tu cadena de conexión de la siguiente manera, reemplazando los valores necesarios:
+   
+` "ConnectionStrings": {
     "DefaultConnection": "Data Source=your_server_name;Initial Catalog=your_database_name;Encrypt=False;Persist Security Info=True;User ID=your_server_user_name;Password=your_sqlserver_password;"
   } `
-5. Instalar las dependencias necesarias, restaurarlas con `dotnet restore`, luego compilar el proyecto con dotnet build y posteriormente ejecutarlo con dotnet run.
-6. Si es necesario puedes ejecutar migraciones para actualziar tu base de datos.
-En el caso de dependencias necesarias, se pueden instalar de la siguiente manera Estos pueden ser añadidos  mediante los comandos `dotnet add package [package name]` o si estas utilizando Visual Studio puedee añadirlos usando `Nuget package manager`.
-7. Una vez verificado que tu API se encuentre en funcionamiento, se procedera a pasar al frontend para ejecutarlo.
-- En la raíz del proyecto, ejecute el comando `npm install` para instalar las dependencias necesarias.
-- Después de hacerlo, se ejecuta el comando `ng serve` para iniciar el proyecto y esperar a que se abra en navegador.
+
+5. Instalar Dependencias: Restaura las dependencias con:
+
+ `dotnet restore`
+
+6. Compilar el Proyecto: Luego, compila el proyecto con:
+
+ `dotnet build`
+
+7. Ejecutar el Proyecto: Ejecuta el proyecto con:
+
+ `dotnet run`
+8. Ejecutar Migraciones: Si es necesario, ejecuta migraciones para actualizar tu base de datos.
+*** En el caso de dependencias necesarias, se pueden instalar de la siguiente manera Estos pueden ser añadidos  mediante los comandos `dotnet add package [package name]` o si estas utilizando Visual Studio puedee añadirlos usando `Nuget package manager`.
+
+9. Instalar Dependencias del Frontend: En la raíz del proyecto, ejecuta:
+
+`npm install`
+
+10. Iniciar el Frontend: Luego, ejecuta:
+
+`ng serve` 
+Y espera a que se abra en tu navegador.
 
 ## Diagrama de la base de datos
  - Diagrama normalizado de la base de datos
  ![alt text](image.png)
- -
+
+ ## Importancia de las Herramientas Utilizadas
+
+### Frontend: Angular
+Angular es un framework poderoso que permite desarrollar aplicaciones web de una sola página (SPA) de manera eficiente. Su arquitectura basada en componentes facilita la organización del código, mejorando la escalabilidad y el mantenimiento del proyecto. Además, Angular proporciona una rica experiencia de usuario a través de su capacidad para crear interfaces interactivas y dinámicas.
+
+### Backend: .NET
+.NET es una plataforma robusta para el desarrollo de aplicaciones backend, que ofrece un rendimiento excepcional y una amplia gama de bibliotecas para facilitar el desarrollo. Utilizar .NET asegura que la API sea rápida, segura y fácil de mantener, lo que es esencial para la generación y consulta de reportes en tiempo real.
+
+### Entity Framework Core
+Entity Framework Core simplifica la interacción con la base de datos al proporcionar un enfoque orientado a objetos. Permite realizar consultas y manipulación de datos de manera más intuitiva, lo que acelera el desarrollo y reduce el riesgo de errores.
+
+### SQL Server
+SQL Server es un sistema de gestión de bases de datos confiable y escalable que garantiza la integridad y seguridad de los datos. Su integración con .NET facilita la creación de soluciones completas que requieren una gestión eficiente de datos.
+
+## Futuras Mejoras
+- **Integración de API Externas**: Explorar la posibilidad de integrar API de terceros para enriquecer los datos disponibles y mejorar el análisis de rendimiento.
+- **Módulo de Feedback para Técnicos**: Implementar un sistema que permita a los técnicos dejar comentarios sobre las tareas realizadas, fomentando una mejora continua en los procesos.
+- **Optimización de la Interfaz de Usuario**: Recoger retroalimentación de los usuarios para mejorar la experiencia de uso, haciendo la interfaz más intuitiva y atractiva.
+- **Análisis de Datos**: Desarrollar funcionalidades de análisis que permitan a los administradores visualizar tendencias en el rendimiento de los técnicos a lo largo del tiempo.
+- **Escalabilidad**: Preparar la infraestructura del sistema para manejar un mayor volumen de datos y usuarios conforme la empresa crezca.
+
+
