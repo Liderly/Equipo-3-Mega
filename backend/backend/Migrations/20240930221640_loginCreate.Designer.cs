@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace backend.Migrations
 {
     [DbContext(typeof(ContextDB))]
-    [Migration("20240926000024_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20240930221640_loginCreate")]
+    partial class loginCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -370,7 +370,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 1,
-                            Assigment_date = new DateTime(2024, 10, 1, 16, 33, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 16, 15, 0, 0, DateTimeKind.Unspecified),
                             service_id = 1,
                             status_assigment = "Pendiente",
                             subscriber_id = 1,
@@ -379,8 +379,8 @@ namespace backend.Migrations
                         new
                         {
                             id = 2,
-                            Assigment_date = new DateTime(2024, 9, 30, 12, 36, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 1, 3, 55, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 18, 26, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 2, 4, 49, 0, 0, DateTimeKind.Unspecified),
                             service_id = 2,
                             status_assigment = "Completado",
                             subscriber_id = 2,
@@ -389,8 +389,8 @@ namespace backend.Migrations
                         new
                         {
                             id = 3,
-                            Assigment_date = new DateTime(2024, 10, 1, 0, 57, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 2, 7, 15, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 23, 59, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 2, 7, 9, 0, 0, DateTimeKind.Unspecified),
                             service_id = 2,
                             status_assigment = "Completado",
                             subscriber_id = 2,
@@ -399,7 +399,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 4,
-                            Assigment_date = new DateTime(2024, 10, 1, 14, 19, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 23, 39, 0, 0, DateTimeKind.Unspecified),
                             service_id = 3,
                             status_assigment = "En Progreso",
                             subscriber_id = 3,
@@ -408,7 +408,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 5,
-                            Assigment_date = new DateTime(2024, 10, 1, 1, 36, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 8, 33, 0, 0, DateTimeKind.Unspecified),
                             service_id = 4,
                             status_assigment = "Pendiente",
                             subscriber_id = 4,
@@ -417,8 +417,8 @@ namespace backend.Migrations
                         new
                         {
                             id = 6,
-                            Assigment_date = new DateTime(2024, 10, 1, 4, 48, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 2, 9, 27, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 20, 34, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 1, 12, 25, 0, 0, DateTimeKind.Unspecified),
                             service_id = 5,
                             status_assigment = "Completado",
                             subscriber_id = 5,
@@ -427,7 +427,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 7,
-                            Assigment_date = new DateTime(2024, 9, 30, 21, 14, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 21, 26, 0, 0, DateTimeKind.Unspecified),
                             service_id = 6,
                             status_assigment = "En Progreso",
                             subscriber_id = 6,
@@ -436,7 +436,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 8,
-                            Assigment_date = new DateTime(2024, 10, 1, 9, 10, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 20, 40, 0, 0, DateTimeKind.Unspecified),
                             service_id = 7,
                             status_assigment = "Pendiente",
                             subscriber_id = 7,
@@ -445,8 +445,8 @@ namespace backend.Migrations
                         new
                         {
                             id = 9,
-                            Assigment_date = new DateTime(2024, 9, 30, 4, 48, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 1, 7, 4, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 17, 38, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 1, 0, 30, 0, 0, DateTimeKind.Unspecified),
                             service_id = 8,
                             status_assigment = "Completado",
                             subscriber_id = 8,
@@ -455,7 +455,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 10,
-                            Assigment_date = new DateTime(2024, 9, 30, 7, 44, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 5, 30, 0, 0, DateTimeKind.Unspecified),
                             service_id = 9,
                             status_assigment = "En Progreso",
                             subscriber_id = 9,
@@ -464,7 +464,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 11,
-                            Assigment_date = new DateTime(2024, 10, 1, 7, 10, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 2, 33, 0, 0, DateTimeKind.Unspecified),
                             service_id = 10,
                             status_assigment = "Pendiente",
                             subscriber_id = 10,
@@ -473,8 +473,8 @@ namespace backend.Migrations
                         new
                         {
                             id = 12,
-                            Assigment_date = new DateTime(2024, 10, 1, 9, 40, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 2, 12, 16, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 16, 42, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 2, 23, 35, 0, 0, DateTimeKind.Unspecified),
                             service_id = 11,
                             status_assigment = "Completado",
                             subscriber_id = 11,
@@ -483,7 +483,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 13,
-                            Assigment_date = new DateTime(2024, 9, 30, 14, 20, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 2, 44, 0, 0, DateTimeKind.Unspecified),
                             service_id = 12,
                             status_assigment = "En Progreso",
                             subscriber_id = 12,
@@ -492,7 +492,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 14,
-                            Assigment_date = new DateTime(2024, 10, 1, 5, 43, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 17, 22, 0, 0, DateTimeKind.Unspecified),
                             service_id = 13,
                             status_assigment = "Pendiente",
                             subscriber_id = 1,
@@ -501,8 +501,8 @@ namespace backend.Migrations
                         new
                         {
                             id = 15,
-                            Assigment_date = new DateTime(2024, 10, 1, 8, 3, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 2, 20, 20, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 10, 49, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 1, 10, 14, 0, 0, DateTimeKind.Unspecified),
                             service_id = 14,
                             status_assigment = "Completado",
                             subscriber_id = 2,
@@ -511,7 +511,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 16,
-                            Assigment_date = new DateTime(2024, 9, 30, 22, 52, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 1, 48, 0, 0, DateTimeKind.Unspecified),
                             service_id = 15,
                             status_assigment = "En Progreso",
                             subscriber_id = 3,
@@ -520,7 +520,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 17,
-                            Assigment_date = new DateTime(2024, 10, 1, 1, 28, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 0, 52, 0, 0, DateTimeKind.Unspecified),
                             service_id = 16,
                             status_assigment = "Pendiente",
                             subscriber_id = 4,
@@ -529,8 +529,8 @@ namespace backend.Migrations
                         new
                         {
                             id = 18,
-                            Assigment_date = new DateTime(2024, 10, 1, 18, 12, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 2, 19, 44, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 2, 46, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 2, 0, 38, 0, 0, DateTimeKind.Unspecified),
                             service_id = 17,
                             status_assigment = "Completado",
                             subscriber_id = 5,
@@ -539,7 +539,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 19,
-                            Assigment_date = new DateTime(2024, 9, 30, 13, 55, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 8, 53, 0, 0, DateTimeKind.Unspecified),
                             service_id = 5,
                             status_assigment = "Pendiente",
                             subscriber_id = 6,
@@ -548,7 +548,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 20,
-                            Assigment_date = new DateTime(2024, 10, 1, 19, 8, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 3, 21, 0, 0, DateTimeKind.Unspecified),
                             service_id = 2,
                             status_assigment = "En Progreso",
                             subscriber_id = 7,
@@ -557,8 +557,8 @@ namespace backend.Migrations
                         new
                         {
                             id = 21,
-                            Assigment_date = new DateTime(2024, 10, 1, 19, 31, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 2, 17, 44, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 14, 41, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 2, 22, 14, 0, 0, DateTimeKind.Unspecified),
                             service_id = 1,
                             status_assigment = "Completado",
                             subscriber_id = 8,
@@ -608,6 +608,20 @@ namespace backend.Migrations
                             bonus = 500,
                             max_range = 210,
                             min_range = 151
+                        },
+                        new
+                        {
+                            Id = 4,
+                            bonus = 800,
+                            max_range = 300,
+                            min_range = 211
+                        },
+                        new
+                        {
+                            Id = 5,
+                            bonus = 1000,
+                            max_range = 400,
+                            min_range = 301
                         });
                 });
 
@@ -650,7 +664,7 @@ namespace backend.Migrations
                             description = "Instalación y activación de línea telefónica residencial.",
                             duration = 2,
                             name = "Instalación de Línea Telefónica",
-                            points = 5
+                            points = 50
                         },
                         new
                         {
@@ -658,7 +672,7 @@ namespace backend.Migrations
                             description = "Resolución de problemas en la línea telefónica.",
                             duration = 1,
                             name = "Reparación de Línea Telefónica",
-                            points = 4
+                            points = 40
                         },
                         new
                         {
@@ -666,7 +680,7 @@ namespace backend.Migrations
                             description = "Cambio de número telefónico en la misma línea.",
                             duration = 1,
                             name = "Cambio de Número Telefónico",
-                            points = 3
+                            points = 30
                         },
                         new
                         {
@@ -674,7 +688,7 @@ namespace backend.Migrations
                             description = "Configuración de funciones en teléfono fijo.",
                             duration = 1,
                             name = "Configuración de Teléfono Fijo",
-                            points = 2
+                            points = 20
                         },
                         new
                         {
@@ -682,7 +696,7 @@ namespace backend.Migrations
                             description = "Instalación de modem y activación del servicio de internet.",
                             duration = 3,
                             name = "Instalación de Internet",
-                            points = 8
+                            points = 80
                         },
                         new
                         {
@@ -690,7 +704,7 @@ namespace backend.Migrations
                             description = "Revisión y mantenimiento preventivo del equipo de internet.",
                             duration = 1,
                             name = "Mantenimiento de Internet",
-                            points = 3
+                            points = 30
                         },
                         new
                         {
@@ -698,7 +712,7 @@ namespace backend.Migrations
                             description = "Configuración de la red Wi-Fi y dispositivos conectados.",
                             duration = 2,
                             name = "Configuración de Red Wi-Fi",
-                            points = 6
+                            points = 60
                         },
                         new
                         {
@@ -706,7 +720,7 @@ namespace backend.Migrations
                             description = "Cambio de equipo por actualización o mal funcionamiento.",
                             duration = 1,
                             name = "Cambio de Modem",
-                            points = 4
+                            points = 40
                         },
                         new
                         {
@@ -714,7 +728,7 @@ namespace backend.Migrations
                             description = "Asistencia remota o en sitio para problemas de internet.",
                             duration = 1,
                             name = "Soporte Técnico de Internet",
-                            points = 3
+                            points = 30
                         },
                         new
                         {
@@ -722,7 +736,7 @@ namespace backend.Migrations
                             description = "Instalación de decodificador y activación de canales básicos.",
                             duration = 2,
                             name = "Instalación de TV Básica",
-                            points = 5
+                            points = 50
                         },
                         new
                         {
@@ -730,7 +744,7 @@ namespace backend.Migrations
                             description = "Instalación de decodificador y activación de canales premium.",
                             duration = 3,
                             name = "Instalación de TV Premium",
-                            points = 8
+                            points = 80
                         },
                         new
                         {
@@ -738,7 +752,7 @@ namespace backend.Migrations
                             description = "Resolución de problemas con la señal de televisión.",
                             duration = 1,
                             name = "Reparación de Señal de TV",
-                            points = 4
+                            points = 40
                         },
                         new
                         {
@@ -746,7 +760,7 @@ namespace backend.Migrations
                             description = "Cambio de equipo por actualización o mal funcionamiento.",
                             duration = 1,
                             name = "Cambio de Decodificador",
-                            points = 4
+                            points = 40
                         },
                         new
                         {
@@ -754,7 +768,7 @@ namespace backend.Migrations
                             description = "Configuración y personalización de canales de TV.",
                             duration = 1,
                             name = "Configuración de Canales",
-                            points = 3
+                            points = 30
                         },
                         new
                         {
@@ -762,7 +776,7 @@ namespace backend.Migrations
                             description = "Instalación de servicio de telefonía, internet y TV.",
                             duration = 4,
                             name = "Paquete Triple Play",
-                            points = 12
+                            points = 120
                         },
                         new
                         {
@@ -770,7 +784,7 @@ namespace backend.Migrations
                             description = "Actualización de servicios combinados de telefonía, internet y TV.",
                             duration = 2,
                             name = "Actualización de Servicios",
-                            points = 7
+                            points = 70
                         },
                         new
                         {
@@ -778,7 +792,7 @@ namespace backend.Migrations
                             description = "Asistencia técnica para problemas en servicios combinados.",
                             duration = 2,
                             name = "Soporte Integral de Servicios",
-                            points = 5
+                            points = 50
                         });
                 });
 
@@ -876,12 +890,13 @@ namespace backend.Migrations
                     b.Property<long>("phone")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("quadrille_id")
+                    b.Property<int>("quadrille_id")
                         .HasColumnType("int");
 
                     b.HasKey("id");
 
-                    b.HasIndex("employee_number");
+                    b.HasIndex("employee_number")
+                        .IsUnique();
 
                     b.HasIndex("quadrille_id");
 
@@ -1072,6 +1087,87 @@ namespace backend.Migrations
                         });
                 });
 
+            modelBuilder.Entity("backend.src.DTO.BonusReport+Tasks", b =>
+                {
+                    b.Property<string>("Client_name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("assigmentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("assigned_date")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("client_address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("points")
+                        .HasColumnType("int");
+
+                    b.Property<string>("status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable((string)null);
+
+                    b.ToView(null, (string)null);
+                });
+
+            modelBuilder.Entity("backend.src.DTO.BonusReport+TechInfo", b =>
+                {
+                    b.Property<int>("NumTech")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("TotalBonus")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("TotalPoints")
+                        .HasColumnType("int");
+
+                    b.Property<int>("crew")
+                        .HasColumnType("int");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable((string)null);
+
+                    b.ToView(null, (string)null);
+                });
+
+            modelBuilder.Entity("backend.src.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("backend.Models.Assignment", b =>
                 {
                     b.HasOne("backend.Models.JobsCatalog", "JobsCatalog")
@@ -1103,7 +1199,9 @@ namespace backend.Migrations
                 {
                     b.HasOne("backend.Models.Quadrille", "Quadrille")
                         .WithMany("Technicians")
-                        .HasForeignKey("quadrille_id");
+                        .HasForeignKey("quadrille_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Quadrille");
                 });

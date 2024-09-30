@@ -6,6 +6,7 @@ using backend.Models.Config;
 using backend.src.DTO;
 using Microsoft.Data.SqlClient;
 using static backend.src.DTO.BonusReport;
+using backend.src.Models;
 namespace Backend.Context
 {
     public class ContextDB : DbContext, IContextDB
@@ -17,6 +18,7 @@ namespace Backend.Context
         public DbSet<Assignment> Assignments { get; set; }
         public DbSet<Bonus_tab> Bonus_Tabs { get; set; }
         public DbSet<TechInfo> TechInfos { get; set; }
+        public DbSet<User> Users { get; set; }
         public ContextDB(DbContextOptions<ContextDB> options) : base(options)
         {
         }
@@ -44,7 +46,7 @@ namespace Backend.Context
         }
         public async Task<List<TechInfo>> GetBonusReportAsync(string id="")
         {
-            // Definir parámetros para el procedimiento almacenado
+            // Definir parï¿½metros para el procedimiento almacenado
             var techIdParam = new SqlParameter("@TechId", id);
                 var results = await this.Set<TechInfo>()
                     .FromSqlRaw("EXEC sp_getBonusReport")

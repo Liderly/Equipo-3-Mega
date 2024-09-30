@@ -4,6 +4,7 @@ using Backend.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace backend.Migrations
 {
     [DbContext(typeof(ContextDB))]
-    partial class ContextDBModelSnapshot : ModelSnapshot
+    [Migration("20240930215613_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -367,7 +370,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 1,
-                            Assigment_date = new DateTime(2024, 9, 30, 16, 15, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 9, 33, 0, 0, DateTimeKind.Unspecified),
                             service_id = 1,
                             status_assigment = "Pendiente",
                             subscriber_id = 1,
@@ -376,8 +379,8 @@ namespace backend.Migrations
                         new
                         {
                             id = 2,
-                            Assigment_date = new DateTime(2024, 10, 1, 18, 26, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 2, 4, 49, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 21, 3, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 2, 21, 38, 0, 0, DateTimeKind.Unspecified),
                             service_id = 2,
                             status_assigment = "Completado",
                             subscriber_id = 2,
@@ -386,8 +389,8 @@ namespace backend.Migrations
                         new
                         {
                             id = 3,
-                            Assigment_date = new DateTime(2024, 10, 1, 23, 59, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 2, 7, 9, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 17, 46, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 1, 1, 31, 0, 0, DateTimeKind.Unspecified),
                             service_id = 2,
                             status_assigment = "Completado",
                             subscriber_id = 2,
@@ -396,7 +399,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 4,
-                            Assigment_date = new DateTime(2024, 9, 30, 23, 39, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 20, 35, 0, 0, DateTimeKind.Unspecified),
                             service_id = 3,
                             status_assigment = "En Progreso",
                             subscriber_id = 3,
@@ -405,7 +408,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 5,
-                            Assigment_date = new DateTime(2024, 10, 1, 8, 33, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 13, 0, 0, 0, DateTimeKind.Unspecified),
                             service_id = 4,
                             status_assigment = "Pendiente",
                             subscriber_id = 4,
@@ -414,8 +417,8 @@ namespace backend.Migrations
                         new
                         {
                             id = 6,
-                            Assigment_date = new DateTime(2024, 9, 30, 20, 34, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 1, 12, 25, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 10, 47, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 1, 13, 28, 0, 0, DateTimeKind.Unspecified),
                             service_id = 5,
                             status_assigment = "Completado",
                             subscriber_id = 5,
@@ -424,7 +427,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 7,
-                            Assigment_date = new DateTime(2024, 9, 30, 21, 26, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 7, 33, 0, 0, DateTimeKind.Unspecified),
                             service_id = 6,
                             status_assigment = "En Progreso",
                             subscriber_id = 6,
@@ -433,7 +436,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 8,
-                            Assigment_date = new DateTime(2024, 9, 30, 20, 40, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 1, 46, 0, 0, DateTimeKind.Unspecified),
                             service_id = 7,
                             status_assigment = "Pendiente",
                             subscriber_id = 7,
@@ -442,8 +445,8 @@ namespace backend.Migrations
                         new
                         {
                             id = 9,
-                            Assigment_date = new DateTime(2024, 9, 30, 17, 38, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 1, 0, 30, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 8, 58, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 1, 5, 15, 0, 0, DateTimeKind.Unspecified),
                             service_id = 8,
                             status_assigment = "Completado",
                             subscriber_id = 8,
@@ -452,7 +455,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 10,
-                            Assigment_date = new DateTime(2024, 9, 30, 5, 30, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 18, 24, 0, 0, DateTimeKind.Unspecified),
                             service_id = 9,
                             status_assigment = "En Progreso",
                             subscriber_id = 9,
@@ -461,7 +464,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 11,
-                            Assigment_date = new DateTime(2024, 9, 30, 2, 33, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 11, 4, 0, 0, DateTimeKind.Unspecified),
                             service_id = 10,
                             status_assigment = "Pendiente",
                             subscriber_id = 10,
@@ -470,8 +473,8 @@ namespace backend.Migrations
                         new
                         {
                             id = 12,
-                            Assigment_date = new DateTime(2024, 9, 30, 16, 42, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 2, 23, 35, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 14, 56, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 1, 8, 31, 0, 0, DateTimeKind.Unspecified),
                             service_id = 11,
                             status_assigment = "Completado",
                             subscriber_id = 11,
@@ -480,7 +483,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 13,
-                            Assigment_date = new DateTime(2024, 10, 1, 2, 44, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 4, 23, 0, 0, DateTimeKind.Unspecified),
                             service_id = 12,
                             status_assigment = "En Progreso",
                             subscriber_id = 12,
@@ -489,7 +492,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 14,
-                            Assigment_date = new DateTime(2024, 9, 30, 17, 22, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 23, 20, 0, 0, DateTimeKind.Unspecified),
                             service_id = 13,
                             status_assigment = "Pendiente",
                             subscriber_id = 1,
@@ -498,8 +501,8 @@ namespace backend.Migrations
                         new
                         {
                             id = 15,
-                            Assigment_date = new DateTime(2024, 10, 1, 10, 49, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 1, 10, 14, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 7, 37, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 1, 17, 53, 0, 0, DateTimeKind.Unspecified),
                             service_id = 14,
                             status_assigment = "Completado",
                             subscriber_id = 2,
@@ -508,7 +511,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 16,
-                            Assigment_date = new DateTime(2024, 10, 1, 1, 48, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 14, 17, 0, 0, DateTimeKind.Unspecified),
                             service_id = 15,
                             status_assigment = "En Progreso",
                             subscriber_id = 3,
@@ -517,7 +520,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 17,
-                            Assigment_date = new DateTime(2024, 10, 1, 0, 52, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 0, 47, 0, 0, DateTimeKind.Unspecified),
                             service_id = 16,
                             status_assigment = "Pendiente",
                             subscriber_id = 4,
@@ -526,8 +529,8 @@ namespace backend.Migrations
                         new
                         {
                             id = 18,
-                            Assigment_date = new DateTime(2024, 10, 1, 2, 46, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 2, 0, 38, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 1, 51, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 1, 22, 39, 0, 0, DateTimeKind.Unspecified),
                             service_id = 17,
                             status_assigment = "Completado",
                             subscriber_id = 5,
@@ -536,7 +539,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 19,
-                            Assigment_date = new DateTime(2024, 10, 1, 8, 53, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 3, 11, 0, 0, DateTimeKind.Unspecified),
                             service_id = 5,
                             status_assigment = "Pendiente",
                             subscriber_id = 6,
@@ -545,7 +548,7 @@ namespace backend.Migrations
                         new
                         {
                             id = 20,
-                            Assigment_date = new DateTime(2024, 10, 1, 3, 21, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 20, 57, 0, 0, DateTimeKind.Unspecified),
                             service_id = 2,
                             status_assigment = "En Progreso",
                             subscriber_id = 7,
@@ -554,8 +557,8 @@ namespace backend.Migrations
                         new
                         {
                             id = 21,
-                            Assigment_date = new DateTime(2024, 9, 30, 14, 41, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 2, 22, 14, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 11, 12, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 2, 16, 26, 0, 0, DateTimeKind.Unspecified),
                             service_id = 1,
                             status_assigment = "Completado",
                             subscriber_id = 8,
@@ -1138,31 +1141,6 @@ namespace backend.Migrations
                     b.ToTable((string)null);
 
                     b.ToView(null, (string)null);
-                });
-
-            modelBuilder.Entity("backend.src.Models.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("backend.Models.Assignment", b =>
