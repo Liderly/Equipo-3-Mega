@@ -68,10 +68,10 @@ Este enfoque modular no solo mejora la calidad del software, sino que también p
 ## Tecnologías Utilizadas
 - **Arquitectura y funcionalidades**:
 - Diagrama entidad-relación bases de datos:
-![BD](Equipo-3-Mega/imagenes/bdimg.jpg)
+![BD](./imagenes/bdimg.jpg)
 
 - Diagrama de flujo del sistema:
-![BD](Equipo-3-Mega/imagenes/diagramaflujo.jpeg)
+![BD](./imagenes/diagramaflujo.jpeg)
 
 ## ¿Por qué se eligieron estas herramientas?
 
