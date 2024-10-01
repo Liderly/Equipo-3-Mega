@@ -72,6 +72,23 @@ Este enfoque modular no solo mejora la calidad del software, sino que también p
 - Diagrama de flujo del sistema:
 ![BD](./imagenes/diagramaflujo.jpeg)
 
+## Capturas del sistema
+- Login del sistema:
+![BD](./imagenes/login.jpg)
+
+- Panel de administrador:
+![BD](./imagenes/panelAdmin.jpg)
+
+- Busqueda por filtro en panel administrador:
+![BD](./imagenes/filtroAdmin.jpg)
+
+- Reportes por desglose:
+![BD](./imagenes/reportesDesglose.jpg)
+
+- Revisión de endpoints con swagger:
+![BD](./imagenes/swagger1.jpg)
+![BD](./imagenes/swagger.jpg)
+
 ## ¿Por qué se eligieron estas herramientas?
 
 - Angular 18:
