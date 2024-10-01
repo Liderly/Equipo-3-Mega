@@ -65,8 +65,7 @@ Este enfoque modular no solo mejora la calidad del software, sino que también p
 - Entity Framework Core 8.0.7: ORM que simplifica la interacción con bases de datos.
 - SQL Server 2019: Sistema de gestión de bases de datos que garantiza la integridad y seguridad de los datos.
 
-## Tecnologías Utilizadas
-- **Arquitectura y funcionalidades**:
+## Arquitectura y funcionalidades
 - Diagrama entidad-relación bases de datos:
 ![BD](./imagenes/bdimg.jpg)
 
