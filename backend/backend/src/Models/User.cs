@@ -7,6 +7,6 @@ public class User
     public string email { get; set; }
     public string num_emp { get; set; }
     public string Password { get; set; }
-     public string role { get; set; }
+    public string role { get; set; }
     
 }

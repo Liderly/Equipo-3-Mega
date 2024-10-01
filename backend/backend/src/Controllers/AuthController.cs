@@ -1,64 +1,41 @@
-using backend.src.DTO;
-using backend.src.Models;
-using backend.src.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
-[ApiController]
 [Route("api/[controller]")]
+[ApiController]
 public class AuthController : ControllerBase
 {
-    private readonly AuthService _authService;
-    private readonly IUserService _userService;
-    private readonly ITokenService  _tokenService;
+    private readonly IAuthService _authService;
 
-
-    public AuthController(AuthService authService, IUserService userService, ITokenService tokenService)
+    public AuthController(IAuthService authService)
     {
         _authService = authService;
-        _userService = userService;
-        _tokenService = tokenService;
     }
 
+    // POST api/auth/login
     [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] User loginRequest)
+    public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
-        if (loginRequest == null || string.IsNullOrEmpty(loginRequest.email) || string.IsNullOrEmpty(loginRequest.Password))
+        var token = await _authService.Login(request.Email, request.Password);
+        if (token == null)
         {
-            return BadRequest("Credenciales inválidas.");
+            return Unauthorized("Usuario o contraseña incorrectos");
         }
 
-        var isValidUser = await _authService.ValidateUserCredentials(loginRequest);
-        if (!isValidUser)
-        {
-            return Unauthorized();
-        }
-
-        // Aquí puedes agregar la lógica para generar un token JWT o similar si es necesario
-
-        return Ok("Inicio de sesión exitoso.");
+        // Retornar el token y el rol del usuario 
+        return Ok(new { token });
     }
 
-    [HttpPost("login2")] //endpoint para el login
-    public IActionResult Login2([FromBody] User userLogin)
+    // POST api/auth/validate
+    [HttpPost("validate")]
+    public async Task<IActionResult> ValidateToken([FromBody] TokenRequest request)
     {
-        // Buscar usuario en la base de datos (usando Email)
-        var user = _userService.GetUserByEmail(userLogin.email);
-        if (user == null)
+        var isValid = await _authService.ValidateToken(request.Token);
+        if (!isValid)
         {
-            return Unauthorized("Invalid email or password");
+            return Unauthorized("Token inválido");
         }
 
-        // Verificar contraseña
-        if (!user.VerifyPassword(userLogin.Password))
-        {
-            return Unauthorized("Invalid email or password");
-        }
-
-        // Generar token
-        var token = _tokenService.GenerateToken(user);
-
-        return Ok(new { Token = token });
+        return Ok("Token válido");
     }
-
 }
