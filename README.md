@@ -73,17 +73,17 @@ Este enfoque modular no solo mejora la calidad del software, sino que también p
 ![BD](./imagenes/diagramaflujo.jpeg)
 
 ## Capturas del sistema
-- Login del sistema:
+- Vista del Login del sistema:
 ![BD](./imagenes/login.jpg)
 
-- Panel de administrador:
-![BD](./imagenes/panelAdmin.jpg)
-
-- Busqueda por filtro en panel administrador:
+- Vista de Panel de Administrador:
 ![BD](./imagenes/filtroAdmin.jpg)
 
-- Reportes por desglose:
+- Reportes por desglose co botones en la vista del Panel Administrador:
 ![BD](./imagenes/reportesDesglose.jpg)
+
+- Vista de tareas para los tecnicos:
+![BD](./imagenes/panelAdmin.jpg)
 
 - Revisión de endpoints con swagger:
 ![BD](./imagenes/swagger1.jpg)
