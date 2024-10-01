@@ -1,10 +1,12 @@
-﻿namespace backend.src.Models
+﻿namespace backend.src.Models;
+
+using BCrypt.Net;
+public class User
 {
-    public class User
-    {
-        public int Id { get; set; }
-        public string email { get; set; }
-        public string Name { get; set; }
-        public string Password { get; set; }
-    }
+    public int Id { get; set; }
+    public string email { get; set; }
+    public string num_emp { get; set; }
+    public string Password { get; set; }
+     public string role { get; set; }
+    
 }

@@ -38,6 +38,11 @@ namespace Backend
             builder.Services.AddScoped<IEmploymentService, EmploymentService>();
             builder.Services.AddSingleton<ICacheService, CacheService>();
 
+            
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<ITokenService, TokenService>();
+            builder.Services.AddScoped<AuthService>();
+
             //Controllers
             builder.Services.AddControllers();
 

@@ -9,10 +9,15 @@ using Microsoft.EntityFrameworkCore;
 public class AuthController : ControllerBase
 {
     private readonly AuthService _authService;
+    private readonly IUserService _userService;
+    private readonly ITokenService  _tokenService;
 
-    public AuthController(AuthService authService)
+
+    public AuthController(AuthService authService, IUserService userService, ITokenService tokenService)
     {
         _authService = authService;
+        _userService = userService;
+        _tokenService = tokenService;
     }
 
     [HttpPost("login")]
@@ -33,4 +38,27 @@ public class AuthController : ControllerBase
 
         return Ok("Inicio de sesión exitoso.");
     }
+
+    [HttpPost("login2")] //endpoint para el login
+    public IActionResult Login2([FromBody] User userLogin)
+    {
+        // Buscar usuario en la base de datos (usando Email)
+        var user = _userService.GetUserByEmail(userLogin.email);
+        if (user == null)
+        {
+            return Unauthorized("Invalid email or password");
+        }
+
+        // Verificar contraseña
+        if (!user.VerifyPassword(userLogin.Password))
+        {
+            return Unauthorized("Invalid email or password");
+        }
+
+        // Generar token
+        var token = _tokenService.GenerateToken(user);
+
+        return Ok(new { Token = token });
+    }
+
 }
