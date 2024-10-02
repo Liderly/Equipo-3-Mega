@@ -5,9 +5,8 @@ Este proyecto es un sistema de gestión de reportes para un acceso administrativ
 
 ## Características
 - **Visualización de Datos**: Interfaz intuitiva para consultar información detallada de empleados y sus tareas.
-- **Filtros Avanzados**: Posibilidad de filtrar reportes por fecha, cuadrilla, estado de las tareas, entre otros.
+- **Filtros Avanzados**: Posibilidad de filtrar por número de empleado.
 - **Generación de Reportes en PDF**: Exporta reportes para su impresión o envío por correo electrónico.
-- **Notificaciones**: Alertas sobre tareas pendientes o desempeño bajo de empleados.
 - **Autenticación y Autorización**: Control de acceso para diferentes niveles de usuario.
 
 ## Tecnologías Utilizadas
@@ -30,7 +29,15 @@ Este proyecto es un sistema de gestión de reportes para un acceso administrativ
    npm start (Inicia la aplicación) La aplicación estará disponible en http://localhost:4200.
 
 ## Vistas del proyecto
-
+- `Login `
+![login](../docs/images/login.jpeg)
+- `Dashboard del técnico`
+![Dashboard del técnico](../docs/images/tech_panel.jpeg)
+- `Dashboard del administrador`
+![Dashboard de administrador filtrado por número de empleado](../docs/images/admin_panel_2.jpeg)
+![Dashboard de administrador](../docs/images/admin_panel_1.jpeg)
+- `Vista del archivo PDF generado`
+![archivo PDF generado](../docs/images/reportePDF.png)
 
 
 ## ¿Por qué se eligieron las herramientas?

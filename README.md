@@ -5,7 +5,7 @@ Bienvenido al proyecto del Hackathon. Este repositorio contiene una solución in
 
 ## Resumen del Proyecto
 
-Este proyecto es un sistema de gestión de reportes para un acceso administrativo que permite visualizar registros de empleados, incluyendo datos de su cuadrilla, tareas asignadas y los puntos obtenidos en cada tarea, lo cual influye en su bono. Los administradores pueden filtrar reportes por diferentes criterios y generar PDFs de los reportes para su uso. Este sistema busca optimizar la gestión del rendimiento de los empleados y facilitar la toma de decisiones basada en datos.
+Este proyecto es un sistema de gestión de reportes para un acceso administrativo que permite visualizar registros de empleados, incluyendo datos de su cuadrilla, tareas asignadas y los puntos obtenidos en cada tarea, lo cual influye en su bono. Los administradores pueden filtrar reportes por número de empleado y generar PDFs de los reportes para su uso. Este sistema busca optimizar la gestión del rendimiento de los empleados y facilitar la toma de decisiones basada en datos.
 
 
 ## Estructura del Repositorio
@@ -63,6 +63,9 @@ Este enfoque modular no solo mejora la calidad del software, sino que también p
 ### Backend
 - .NET 8.0: Plataforma para desarrollar APIs robustas y escalables.
 - Entity Framework Core 8.0.7: ORM que simplifica la interacción con bases de datos.
+- JWTBearer 8.0.8: Permite autenticar solicitudes HTTP que contienen JSON Web Token (JWT) en la cabecera de la autorización.
+- BCrypt 4.0.3: Utilizado para el hashing seguro de contraseñas de los usuarios.
+- StackExchange.Redis: Sistema de almacenamiento que permite optimizar los tiempos de respuesta y facilita el manejo de datos temporales.
 - SQL Server 2019: Sistema de gestión de bases de datos que garantiza la integridad y seguridad de los datos.
 
 ## ¿Por qué se eligieron estas herramientas?
@@ -87,12 +90,27 @@ Proporciona un entorno seguro y confiable para el almacenamiento y gestión de d
 
 ## Futuras Mejoras
 
+- Cambio de estado de tareas mediante visión artificial: Implementar sistema de verificación de imágenes mediante visión artificial que permitan verificar imágenes cargadas por técnicos. El estado de la tarea cambiaría a "Completada" si la imagen cargada presenta una adecuada instalación, en caso de que no sea adecuada o sea una imagen diferente a lo requerido se mantiene "En progreso".
 - Integración con API Externas: Posibilidad de integrar datos de otras aplicaciones para un análisis más completo.
 - Módulo de Feedback: Implementar un sistema de retroalimentación que permita a los empleados evaluar sus tareas y proporcionar comentarios.
 - Optimización de Rendimiento: Continuar mejorando el rendimiento de la aplicación, asegurando tiempos de carga rápidos y una experiencia de usuario óptima.
 - Interfaz de Usuario Mejorada: Recoger retroalimentación de usuarios para hacer mejoras continuas en la UI.
 - Análisis de Datos Avanzados: Desarrollar funcionalidades que permitan análisis de tendencias en el rendimiento de los técnicos.
 
+## Vistas del proyecto
+- `Login `
+![login](docs/images/login.jpeg)
+- `Dashboard del técnico`
+![Dashboard del técnico](docs/images/tech_panel.jpeg)
+- `Dashboard del administrador`
+![Dashboard de administrador](docs/images/admin_panel_2.jpeg)
+![Dashboard de administrador](docs/images/admin_panel_1.jpeg)
+- `Vista del archivo PDF generado`
+![archivo PDF generado](docs/images/reportePDF.png)
+
+## Diagrama de la base de datos
+ - Diagrama normalizado de la base de datos
+ ![DatabaseDiagram](docs/images/Database_Diagram.png)
 ## Instalación
 
 ### Frontend
@@ -107,7 +125,7 @@ npm install
 `
 3. Inicia la aplicación:
 `
-npm star
+npm start
 `
 La aplicación estará disponible en http://localhost:4200.
 

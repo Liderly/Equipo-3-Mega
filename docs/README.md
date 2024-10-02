@@ -33,14 +33,13 @@ Por lo tanto, se requiere desarrollar un sistema automatizado que visualice los 
 
 ### Frontend
 
-- **Angular**: v17
+- **Angular**: v18
 
 ### Backend
 
 - **.NET**: v8.0
 - **Entity Framework Core**: v8.0.7
 - **Entity Framework Core.SqlServer**: v8.0.7
-- **Microsoft.EntityFrameworkCore.Tools**: v8.0.7
   
 Puedes añadir estos paquetes mediante el comando:
 ```bash
@@ -128,12 +127,12 @@ La solución propuesta consiste en una plataforma que permita consultar y visual
 
 10. Iniciar el Frontend: Luego, ejecuta:
 
-`ng serve` 
+`ng serve`
 Y espera a que se abra en tu navegador.
 
 ## Diagrama de la base de datos
  - Diagrama normalizado de la base de datos
- ![alt text](image.png)
+ ![DatabaseDiagram](images/Database_Diagram.png)
 
  ## Importancia de las Herramientas Utilizadas
 
@@ -150,6 +149,7 @@ Entity Framework Core simplifica la interacción con la base de datos al proporc
 SQL Server es un sistema de gestión de bases de datos confiable y escalable que garantiza la integridad y seguridad de los datos. Su integración con .NET facilita la creación de soluciones completas que requieren una gestión eficiente de datos.
 
 ## Futuras Mejoras
+- **Cambio de estado de tareas mediante visión artificial**: Implementar sistema de verificación de imágenes mediante visión artificial que permitan verificar imágenes cargadas por técnicos. El estado de la tarea cambiaría a "Completada" si la imagen cargada presenta una adecuada instalación, en caso de que no sea adecuada o sea una imagen diferente a lo requerido se mantiene "En progreso".
 - **Integración de API Externas**: Explorar la posibilidad de integrar API de terceros para enriquecer los datos disponibles y mejorar el análisis de rendimiento.
 - **Módulo de Feedback para Técnicos**: Implementar un sistema que permita a los técnicos dejar comentarios sobre las tareas realizadas, fomentando una mejora continua en los procesos.
 - **Optimización de la Interfaz de Usuario**: Recoger retroalimentación de los usuarios para mejorar la experiencia de uso, haciendo la interfaz más intuitiva y atractiva.
