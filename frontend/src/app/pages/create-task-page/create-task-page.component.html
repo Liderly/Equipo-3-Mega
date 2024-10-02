@@ -1,1 +1,97 @@
-<p>create-task-page works!</p>
+<!-- Botón para abrir el modal -->
+<button
+  pButton
+  type="button"
+  label="Agregar Tarea"
+  icon="pi pi-plus"
+  (click)="showModal()"
+></button>
+
+<!-- Modal usando p-dialog de PrimeNG con más ancho y espacio -->
+<p-dialog
+  header="Agregar Tarea para el Trabajador"
+  [(visible)]="displayModal"
+  [modal]="true"
+  [style]="{ width: '900px', minHeight: '600px' }"
+  [draggable]="false"
+  [closable]="false"
+>
+  <div class="p-fluid">
+    <!-- Nombre del Técnico (Trabajador) -->
+    <div class="p-field mb-6">
+      <label for="workerName" class="text-lg mb-2">Nombre del Técnico</label>
+      <input
+        id="workerName"
+        type="text"
+        pInputText
+        class="w-full p-3"
+        placeholder="Nombre del trabajador"
+      />
+    </div>
+
+    <!-- Nombre del Cliente -->
+    <div class="p-field mb-6">
+      <label for="clientName" class="text-lg mb-2">Nombre del Cliente</label>
+      <input
+        id="clientName"
+        type="text"
+        pInputText
+        class="w-full p-3"
+        placeholder="Nombre del cliente"
+      />
+    </div>
+
+    <!-- Domicilio del Cliente -->
+    <div class="p-field mb-6">
+      <label for="clientAddress" class="text-lg mb-2"
+        >Domicilio del Cliente</label
+      >
+      <input
+        id="clientAddress"
+        type="text"
+        pInputText
+        class="w-full p-3"
+        placeholder="Domicilio del cliente"
+      />
+    </div>
+
+    <!-- Fecha de la Tarea -->
+    <div class="p-field mb-6">
+      <label for="taskDate" class="text-lg mb-2">Fecha de la Tarea</label>
+      <p-calendar id="taskDate" class="w-full" showIcon></p-calendar>
+    </div>
+
+    <!-- Servicio Realizado -->
+    <div class="p-field mb-6">
+      <label for="servicePerformed" class="text-lg mb-2"
+        >Servicio Realizado</label
+      >
+      <input
+        id="servicePerformed"
+        type="text"
+        pInputText
+        class="w-full p-3"
+        placeholder="Descripción del servicio"
+      />
+    </div>
+
+    <!-- Botones dentro del modal -->
+    <div class="flex gap-8 pt-6">
+      <button
+        pButton
+        type="button"
+        label="Cancelar"
+        icon="pi pi-times"
+        class="p-button-secondary w-full p-3"
+        (click)="hideModal()"
+      ></button>
+      <button
+        pButton
+        type="button"
+        label="Agregar"
+        icon="pi pi-check"
+        class="p-button-primary w-full p-3"
+      ></button>
+    </div>
+  </div>
+</p-dialog>

@@ -1,23 +1,32 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
+import { DialogModule } from 'primeng/dialog';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { CalendarModule } from 'primeng/calendar';
+import { InputTextModule } from 'primeng/inputtext';
 
-import { CreateTaskPageComponent } from './create-task-page.component';
+@Component({
+  selector: 'app-create-task-page',
+  standalone: true,
+  imports: [
+    DialogModule,
+    FormsModule,
+    ButtonModule,
+    CalendarModule,
+    InputTextModule,
+  ],
+  templateUrl: './create-task-page.component.html',
+  styleUrls: ['./create-task-page.component.css'],
+})
+export class CreateTaskPageComponent {
+  displayModal: boolean = false;
 
-describe('CreateTaskPageComponent', () => {
-  let component: CreateTaskPageComponent;
-  let fixture: ComponentFixture<CreateTaskPageComponent>;
+  // Funciones para mostrar y ocultar el modal
+  showModal() {
+    this.displayModal = true;
+  }
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [CreateTaskPageComponent]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(CreateTaskPageComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  hideModal() {
+    this.displayModal = false;
+  }
+}
