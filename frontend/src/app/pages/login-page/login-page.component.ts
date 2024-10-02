@@ -1,7 +1,7 @@
 import { AuthService } from './../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { ValidatorService } from './../../validators/validator.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 
@@ -12,7 +12,7 @@ import { Router, RouterModule } from '@angular/router';
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
 })
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent {
   loginForm!: FormGroup;
   MessageError: string="";
 constructor(
@@ -25,9 +25,6 @@ constructor(
     password: ['', Validators.required]
   });
 }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
 
 login(){
 this.loginForm.markAllAsTouched();

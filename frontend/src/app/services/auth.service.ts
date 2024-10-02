@@ -20,7 +20,7 @@ export class AuthService {
     return this.HttpClient.post(`${this.apiUrl}/validate`, { token }).pipe(
       tap(
         (response) => {
-          console.log(response);
+          console.log('valido');
         },
         (error) => {
           this.clearLocalStorage();

@@ -31,7 +31,7 @@ groupRowsBy="name"
                 <th style="width:8%;border: 1px solid #ccc;text-align: center;">Actualizar</th>
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-task>
+        <ng-template pTemplate="body" let-task let-index="rowIndex">
           <tr>
             <td style="border: 1px solid #cccccc3b;text-align: center;">{{ task.client_name }}</td>
             <td style="border: 1px solid #cccccc3b;text-align: center;">{{ task.client_address }}</td>
@@ -46,13 +46,13 @@ groupRowsBy="name"
                           severity="success"
                           [style]="{'background-color': 'orange', 'color': 'white'}"
                           icon="pi pi-play"
-                          (onClick)="updateTaskStatus(task, 'En Progreso')"
+                          (onClick)="updateTaskStatus(index,task.assigmentId, 'En Progreso')"
                           pTooltip="Iniciar tarea">
                 </p-button>
                 <p-button *ngSwitchCase="'En Progreso'"
                           icon="pi pi-check"
                           [style]="{'background-color': 'blue', 'color': 'white'}"
-                          (onClick)="updateTaskStatus(task, 'Completado')"
+                          (onClick)="updateTaskStatus(index,task.assigmentId, 'Completado')"
                           pTooltip="Completar tarea">
                 </p-button>
                 <p-button *ngSwitchCase="'Completado'"

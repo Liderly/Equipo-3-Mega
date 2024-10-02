@@ -12,6 +12,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { Service, TechInfo } from '../../interfaces/tecResponse.interface';
+import { UpdateTaskDto } from '../../interfaces/UpdateTaskDto.interface';
 
 @Component({
   selector: 'app-tec-dashboard',
@@ -63,8 +64,18 @@ export class TecDashboardComponent implements OnInit {
         return undefined;
     }
   }
-  updateTaskStatus(task:Service, status:string){
-    console.log(task);
-    console.log(status);
+  updateTaskStatus(index:number,assigment_id:number,status:string){
+    const body:UpdateTaskDto={
+      technician_id:0,
+      subscriber_id:0,
+      service_id:0,
+      status:status
+    }
+    this.TaskService.updateTask(assigment_id,body).subscribe((data)=>{
+      if (data.message==='Tarea actualizada exitosamente') {
+        this.data.tasks[index].status=status;
+      }
+    })
+
   }
 }
