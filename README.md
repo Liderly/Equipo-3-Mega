@@ -65,6 +65,40 @@ Este enfoque modular no solo mejora la calidad del software, sino que también p
 - Entity Framework Core 8.0.7: ORM que simplifica la interacción con bases de datos.
 - SQL Server 2019: Sistema de gestión de bases de datos que garantiza la integridad y seguridad de los datos.
 
+### Librerias adicionales y recurso adicionales
+- Librerias en backend: JTW para crear y administrar tokens web JSON locales específicos del proyecto y BCrypt.net que es una implementación de la función de hashing de contraseñas Bcrypt que se utiliza para encriptar contraseñas en .NET
+
+- Redis: uso de memoria RAM para generar cache y acceder rapidamente a los datos
+
+- Docker: implementación de contenedores de docker dentro del proyecto
+
+## Arquitectura y funcionalidades
+- Diagrama entidad-relación bases de datos:
+![BD](./imagenes/bdimg.jpg)
+
+- Diagrama de flujo del sistema:
+![BD](./imagenes/diagramaflujo.jpeg)
+
+## Capturas del sistema
+- Vista del Login del sistema:
+![BD](./imagenes/login.jpg)
+
+- Vista de Panel de Administrador: Reportes por desglose en botones de cada tecnico:
+![BD](./imagenes/reportesDesglose.jpg)
+
+- Busqueda por filtro de numero de empleado en Panel Administrador
+![BD](./imagenes/filtroAdmin.jpg)
+
+- Vista de tareas para los técnicos:
+![BD](./imagenes/panelAdmin.jpg)
+
+- Al generar el reporte dando click al bóton "Generar reporte" creara un archivo .pdf:
+![BD](./imagenes/reportepdf.jpg)
+
+- Revisión de endpoints con swagger:
+![BD](./imagenes/swagger1.jpg)
+![BD](./imagenes/swagger.jpg)
+
 ## ¿Por qué se eligieron estas herramientas?
 
 - Angular 18:
