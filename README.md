@@ -68,9 +68,9 @@ Este enfoque modular no solo mejora la calidad del software, sino que también p
 ### Librerias adicionales y recurso adicionales
 - Librerias en backend: JTW para crear y administrar tokens web JSON locales específicos del proyecto y BCrypt.net que es una implementación de la función de hashing de contraseñas Bcrypt que se utiliza para encriptar contraseñas en .NET
 
--Redis: uso de memoria RAM para generar cache y acceder rapidamente a los datos
+- Redis: uso de memoria RAM para generar cache y acceder rapidamente a los datos
 
--Docker: implementación de contenedores de docker dentro del proyecto
+- Docker: implementación de contenedores de docker dentro del proyecto
 
 ## Arquitectura y funcionalidades
 - Diagrama entidad-relación bases de datos:
