@@ -28,7 +28,7 @@ namespace Backend
             builder.Services.AddDbContext<ContextDB>(options =>
             {
                 
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+                options.UseSqlServer(builder.Configuration.GetConnectionString("Connection"));
                
             });
             //Services
@@ -37,6 +37,13 @@ namespace Backend
             builder.Services.AddScoped<IBonusReportService, BonusReportService>();
             builder.Services.AddScoped<IEmploymentService, EmploymentService>();
             builder.Services.AddSingleton<ICacheService, CacheService>();
+
+            
+            //builder.Services.AddScoped<IUserService, UserService>();
+            //builder.Services.AddScoped<ITokenService, TokenService>();
+            builder.Services.AddScoped<TokenService>();
+
+            builder.Services.AddScoped<IAuthService, AuthService>();
 
             //Controllers
             builder.Services.AddControllers();
@@ -66,9 +73,9 @@ namespace Backend
             });
             
             var app = builder.Build();
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+            var connectionString = builder.Configuration.GetConnectionString("Connection");
 
-            // Mostrar la cadena de conexión en el log
+            // Mostrar la cadena de conexiï¿½n en el log
             app.Logger.LogInformation("Connection string: {ConnectionString} en modo {1}", connectionString, Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"));
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

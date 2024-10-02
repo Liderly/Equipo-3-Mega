@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace backend.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -87,7 +87,7 @@ namespace backend.Migrations
                     name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     last_name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     phone = table.Column<long>(type: "bigint", nullable: false),
-                    quadrille_id = table.Column<int>(type: "int", nullable: true)
+                    quadrille_id = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -96,7 +96,8 @@ namespace backend.Migrations
                         name: "FK_Technicians_Quadrille_quadrille_id",
                         column: x => x.quadrille_id,
                         principalTable: "Quadrille",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -142,7 +143,9 @@ namespace backend.Migrations
                 {
                     { 1, 0, 80, 0 },
                     { 2, 300, 150, 81 },
-                    { 3, 500, 210, 151 }
+                    { 3, 500, 210, 151 },
+                    { 4, 800, 300, 211 },
+                    { 5, 1000, 400, 301 }
                 });
 
             migrationBuilder.InsertData(
@@ -194,23 +197,23 @@ namespace backend.Migrations
                 columns: new[] { "id", "description", "duration", "name", "points" },
                 values: new object[,]
                 {
-                    { 1, "Instalación y activación de línea telefónica residencial.", 2, "Instalación de Línea Telefónica", 5 },
-                    { 2, "Resolución de problemas en la línea telefónica.", 1, "Reparación de Línea Telefónica", 4 },
-                    { 3, "Cambio de número telefónico en la misma línea.", 1, "Cambio de Número Telefónico", 3 },
-                    { 4, "Configuración de funciones en teléfono fijo.", 1, "Configuración de Teléfono Fijo", 2 },
-                    { 5, "Instalación de modem y activación del servicio de internet.", 3, "Instalación de Internet", 8 },
-                    { 6, "Revisión y mantenimiento preventivo del equipo de internet.", 1, "Mantenimiento de Internet", 3 },
-                    { 7, "Configuración de la red Wi-Fi y dispositivos conectados.", 2, "Configuración de Red Wi-Fi", 6 },
-                    { 8, "Cambio de equipo por actualización o mal funcionamiento.", 1, "Cambio de Modem", 4 },
-                    { 9, "Asistencia remota o en sitio para problemas de internet.", 1, "Soporte Técnico de Internet", 3 },
-                    { 10, "Instalación de decodificador y activación de canales básicos.", 2, "Instalación de TV Básica", 5 },
-                    { 11, "Instalación de decodificador y activación de canales premium.", 3, "Instalación de TV Premium", 8 },
-                    { 12, "Resolución de problemas con la señal de televisión.", 1, "Reparación de Señal de TV", 4 },
-                    { 13, "Cambio de equipo por actualización o mal funcionamiento.", 1, "Cambio de Decodificador", 4 },
-                    { 14, "Configuración y personalización de canales de TV.", 1, "Configuración de Canales", 3 },
-                    { 15, "Instalación de servicio de telefonía, internet y TV.", 4, "Paquete Triple Play", 12 },
-                    { 16, "Actualización de servicios combinados de telefonía, internet y TV.", 2, "Actualización de Servicios", 7 },
-                    { 17, "Asistencia técnica para problemas en servicios combinados.", 2, "Soporte Integral de Servicios", 5 }
+                    { 1, "Instalación y activación de línea telefónica residencial.", 2, "Instalación de Línea Telefónica", 50 },
+                    { 2, "Resolución de problemas en la línea telefónica.", 1, "Reparación de Línea Telefónica", 40 },
+                    { 3, "Cambio de número telefónico en la misma línea.", 1, "Cambio de Número Telefónico", 30 },
+                    { 4, "Configuración de funciones en teléfono fijo.", 1, "Configuración de Teléfono Fijo", 20 },
+                    { 5, "Instalación de modem y activación del servicio de internet.", 3, "Instalación de Internet", 80 },
+                    { 6, "Revisión y mantenimiento preventivo del equipo de internet.", 1, "Mantenimiento de Internet", 30 },
+                    { 7, "Configuración de la red Wi-Fi y dispositivos conectados.", 2, "Configuración de Red Wi-Fi", 60 },
+                    { 8, "Cambio de equipo por actualización o mal funcionamiento.", 1, "Cambio de Modem", 40 },
+                    { 9, "Asistencia remota o en sitio para problemas de internet.", 1, "Soporte Técnico de Internet", 30 },
+                    { 10, "Instalación de decodificador y activación de canales básicos.", 2, "Instalación de TV Básica", 50 },
+                    { 11, "Instalación de decodificador y activación de canales premium.", 3, "Instalación de TV Premium", 80 },
+                    { 12, "Resolución de problemas con la señal de televisión.", 1, "Reparación de Señal de TV", 40 },
+                    { 13, "Cambio de equipo por actualización o mal funcionamiento.", 1, "Cambio de Decodificador", 40 },
+                    { 14, "Configuración y personalización de canales de TV.", 1, "Configuración de Canales", 30 },
+                    { 15, "Instalación de servicio de telefonía, internet y TV.", 4, "Paquete Triple Play", 120 },
+                    { 16, "Actualización de servicios combinados de telefonía, internet y TV.", 2, "Actualización de Servicios", 70 },
+                    { 17, "Asistencia técnica para problemas en servicios combinados.", 2, "Soporte Integral de Servicios", 50 }
                 });
 
             migrationBuilder.InsertData(
@@ -245,27 +248,27 @@ namespace backend.Migrations
                 columns: new[] { "id", "date_order", "date_finish", "service_id", "state_order", "subscriber_id", "technician_id" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 10, 1, 16, 33, 0, 0, DateTimeKind.Unspecified), null, 1, "Pendiente", 1, 1 },
-                    { 2, new DateTime(2024, 9, 30, 12, 36, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 10, 1, 3, 55, 0, 0, DateTimeKind.Unspecified), 2, "Completado", 2, 2 },
-                    { 3, new DateTime(2024, 10, 1, 0, 57, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 10, 2, 7, 15, 0, 0, DateTimeKind.Unspecified), 2, "Completado", 2, 2 },
-                    { 4, new DateTime(2024, 10, 1, 14, 19, 0, 0, DateTimeKind.Unspecified), null, 3, "En Progreso", 3, 3 },
-                    { 5, new DateTime(2024, 10, 1, 1, 36, 0, 0, DateTimeKind.Unspecified), null, 4, "Pendiente", 4, 4 },
-                    { 6, new DateTime(2024, 10, 1, 4, 48, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 10, 2, 9, 27, 0, 0, DateTimeKind.Unspecified), 5, "Completado", 5, 5 },
-                    { 7, new DateTime(2024, 9, 30, 21, 14, 0, 0, DateTimeKind.Unspecified), null, 6, "En Progreso", 6, 6 },
-                    { 8, new DateTime(2024, 10, 1, 9, 10, 0, 0, DateTimeKind.Unspecified), null, 7, "Pendiente", 7, 7 },
-                    { 9, new DateTime(2024, 9, 30, 4, 48, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 10, 1, 7, 4, 0, 0, DateTimeKind.Unspecified), 8, "Completado", 8, 8 },
-                    { 10, new DateTime(2024, 9, 30, 7, 44, 0, 0, DateTimeKind.Unspecified), null, 9, "En Progreso", 9, 9 },
-                    { 11, new DateTime(2024, 10, 1, 7, 10, 0, 0, DateTimeKind.Unspecified), null, 10, "Pendiente", 10, 10 },
-                    { 12, new DateTime(2024, 10, 1, 9, 40, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 10, 2, 12, 16, 0, 0, DateTimeKind.Unspecified), 11, "Completado", 11, 11 },
-                    { 13, new DateTime(2024, 9, 30, 14, 20, 0, 0, DateTimeKind.Unspecified), null, 12, "En Progreso", 12, 12 },
-                    { 14, new DateTime(2024, 10, 1, 5, 43, 0, 0, DateTimeKind.Unspecified), null, 13, "Pendiente", 1, 1 },
-                    { 15, new DateTime(2024, 10, 1, 8, 3, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 10, 2, 20, 20, 0, 0, DateTimeKind.Unspecified), 14, "Completado", 2, 2 },
-                    { 16, new DateTime(2024, 9, 30, 22, 52, 0, 0, DateTimeKind.Unspecified), null, 15, "En Progreso", 3, 3 },
-                    { 17, new DateTime(2024, 10, 1, 1, 28, 0, 0, DateTimeKind.Unspecified), null, 16, "Pendiente", 4, 4 },
-                    { 18, new DateTime(2024, 10, 1, 18, 12, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 10, 2, 19, 44, 0, 0, DateTimeKind.Unspecified), 17, "Completado", 5, 5 },
-                    { 19, new DateTime(2024, 9, 30, 13, 55, 0, 0, DateTimeKind.Unspecified), null, 5, "Pendiente", 6, 6 },
-                    { 20, new DateTime(2024, 10, 1, 19, 8, 0, 0, DateTimeKind.Unspecified), null, 2, "En Progreso", 7, 7 },
-                    { 21, new DateTime(2024, 10, 1, 19, 31, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 10, 2, 17, 44, 0, 0, DateTimeKind.Unspecified), 1, "Completado", 8, 8 }
+                    { 1, new DateTime(2024, 9, 30, 9, 33, 0, 0, DateTimeKind.Unspecified), null, 1, "Pendiente", 1, 1 },
+                    { 2, new DateTime(2024, 10, 1, 21, 3, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 10, 2, 21, 38, 0, 0, DateTimeKind.Unspecified), 2, "Completado", 2, 2 },
+                    { 3, new DateTime(2024, 10, 1, 17, 46, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 10, 1, 1, 31, 0, 0, DateTimeKind.Unspecified), 2, "Completado", 2, 2 },
+                    { 4, new DateTime(2024, 9, 30, 20, 35, 0, 0, DateTimeKind.Unspecified), null, 3, "En Progreso", 3, 3 },
+                    { 5, new DateTime(2024, 9, 30, 13, 0, 0, 0, DateTimeKind.Unspecified), null, 4, "Pendiente", 4, 4 },
+                    { 6, new DateTime(2024, 9, 30, 10, 47, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 10, 1, 13, 28, 0, 0, DateTimeKind.Unspecified), 5, "Completado", 5, 5 },
+                    { 7, new DateTime(2024, 9, 30, 7, 33, 0, 0, DateTimeKind.Unspecified), null, 6, "En Progreso", 6, 6 },
+                    { 8, new DateTime(2024, 10, 1, 1, 46, 0, 0, DateTimeKind.Unspecified), null, 7, "Pendiente", 7, 7 },
+                    { 9, new DateTime(2024, 9, 30, 8, 58, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 10, 1, 5, 15, 0, 0, DateTimeKind.Unspecified), 8, "Completado", 8, 8 },
+                    { 10, new DateTime(2024, 10, 1, 18, 24, 0, 0, DateTimeKind.Unspecified), null, 9, "En Progreso", 9, 9 },
+                    { 11, new DateTime(2024, 10, 1, 11, 4, 0, 0, DateTimeKind.Unspecified), null, 10, "Pendiente", 10, 10 },
+                    { 12, new DateTime(2024, 10, 1, 14, 56, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 10, 1, 8, 31, 0, 0, DateTimeKind.Unspecified), 11, "Completado", 11, 11 },
+                    { 13, new DateTime(2024, 9, 30, 4, 23, 0, 0, DateTimeKind.Unspecified), null, 12, "En Progreso", 12, 12 },
+                    { 14, new DateTime(2024, 9, 30, 23, 20, 0, 0, DateTimeKind.Unspecified), null, 13, "Pendiente", 1, 1 },
+                    { 15, new DateTime(2024, 10, 1, 7, 37, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 10, 1, 17, 53, 0, 0, DateTimeKind.Unspecified), 14, "Completado", 2, 2 },
+                    { 16, new DateTime(2024, 9, 30, 14, 17, 0, 0, DateTimeKind.Unspecified), null, 15, "En Progreso", 3, 3 },
+                    { 17, new DateTime(2024, 10, 1, 0, 47, 0, 0, DateTimeKind.Unspecified), null, 16, "Pendiente", 4, 4 },
+                    { 18, new DateTime(2024, 9, 30, 1, 51, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 10, 1, 22, 39, 0, 0, DateTimeKind.Unspecified), 17, "Completado", 5, 5 },
+                    { 19, new DateTime(2024, 10, 1, 3, 11, 0, 0, DateTimeKind.Unspecified), null, 5, "Pendiente", 6, 6 },
+                    { 20, new DateTime(2024, 10, 1, 20, 57, 0, 0, DateTimeKind.Unspecified), null, 2, "En Progreso", 7, 7 },
+                    { 21, new DateTime(2024, 10, 1, 11, 12, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 10, 2, 16, 26, 0, 0, DateTimeKind.Unspecified), 1, "Completado", 8, 8 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -321,7 +324,8 @@ namespace backend.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Technicians_employee_number",
                 table: "Technicians",
-                column: "employee_number");
+                column: "employee_number",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Technicians_last_name_name",

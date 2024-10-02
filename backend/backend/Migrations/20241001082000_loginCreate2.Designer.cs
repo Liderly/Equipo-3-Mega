@@ -4,6 +4,7 @@ using Backend.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace backend.Migrations
 {
     [DbContext(typeof(ContextDB))]
-    partial class ContextDBModelSnapshot : ModelSnapshot
+    [Migration("20241001082000_loginCreate2")]
+    partial class loginCreate2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -367,18 +370,17 @@ namespace backend.Migrations
                         new
                         {
                             id = 1,
-                            Assigment_date = new DateTime(2024, 10, 1, 16, 33, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 2, 18, 11, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 10, 31, 0, 0, DateTimeKind.Unspecified),
                             service_id = 1,
-                            status_assigment = "Completado",
+                            status_assigment = "Pendiente",
                             subscriber_id = 1,
                             technician_id = 1
                         },
                         new
                         {
                             id = 2,
-                            Assigment_date = new DateTime(2024, 10, 1, 16, 52, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 2, 8, 40, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 21, 16, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 2, 23, 28, 0, 0, DateTimeKind.Unspecified),
                             service_id = 2,
                             status_assigment = "Completado",
                             subscriber_id = 2,
@@ -387,8 +389,8 @@ namespace backend.Migrations
                         new
                         {
                             id = 3,
-                            Assigment_date = new DateTime(2024, 10, 1, 21, 39, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 2, 20, 3, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 13, 4, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 1, 0, 58, 0, 0, DateTimeKind.Unspecified),
                             service_id = 2,
                             status_assigment = "Completado",
                             subscriber_id = 2,
@@ -397,28 +399,26 @@ namespace backend.Migrations
                         new
                         {
                             id = 4,
-                            Assigment_date = new DateTime(2024, 10, 1, 6, 21, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 2, 10, 29, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 8, 22, 0, 0, DateTimeKind.Unspecified),
                             service_id = 3,
-                            status_assigment = "Completado",
+                            status_assigment = "En Progreso",
                             subscriber_id = 3,
                             technician_id = 3
                         },
                         new
                         {
                             id = 5,
-                            Assigment_date = new DateTime(2024, 9, 30, 23, 5, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 1, 4, 16, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 4, 9, 0, 0, DateTimeKind.Unspecified),
                             service_id = 4,
-                            status_assigment = "Completado",
+                            status_assigment = "Pendiente",
                             subscriber_id = 4,
                             technician_id = 4
                         },
                         new
                         {
                             id = 6,
-                            Assigment_date = new DateTime(2024, 10, 1, 5, 53, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 1, 20, 6, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 1, 7, 5, 0, 0, DateTimeKind.Unspecified),
                             service_id = 5,
                             status_assigment = "Completado",
                             subscriber_id = 5,
@@ -427,28 +427,26 @@ namespace backend.Migrations
                         new
                         {
                             id = 7,
-                            Assigment_date = new DateTime(2024, 9, 30, 0, 28, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 2, 20, 29, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 20, 11, 0, 0, DateTimeKind.Unspecified),
                             service_id = 6,
-                            status_assigment = "Completado",
+                            status_assigment = "En Progreso",
                             subscriber_id = 6,
                             technician_id = 6
                         },
                         new
                         {
                             id = 8,
-                            Assigment_date = new DateTime(2024, 10, 1, 4, 23, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 1, 11, 53, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 23, 36, 0, 0, DateTimeKind.Unspecified),
                             service_id = 7,
-                            status_assigment = "Completado",
+                            status_assigment = "Pendiente",
                             subscriber_id = 7,
                             technician_id = 7
                         },
                         new
                         {
                             id = 9,
-                            Assigment_date = new DateTime(2024, 9, 30, 15, 17, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 2, 10, 7, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 2, 2, 55, 0, 0, DateTimeKind.Unspecified),
                             service_id = 8,
                             status_assigment = "Completado",
                             subscriber_id = 8,
@@ -457,28 +455,26 @@ namespace backend.Migrations
                         new
                         {
                             id = 10,
-                            Assigment_date = new DateTime(2024, 9, 30, 11, 37, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 1, 1, 39, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 1, 2, 0, 0, DateTimeKind.Unspecified),
                             service_id = 9,
-                            status_assigment = "Completado",
+                            status_assigment = "En Progreso",
                             subscriber_id = 9,
                             technician_id = 9
                         },
                         new
                         {
                             id = 11,
-                            Assigment_date = new DateTime(2024, 9, 30, 16, 57, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 1, 3, 5, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 6, 17, 0, 0, DateTimeKind.Unspecified),
                             service_id = 10,
-                            status_assigment = "Completado",
+                            status_assigment = "Pendiente",
                             subscriber_id = 10,
                             technician_id = 10
                         },
                         new
                         {
                             id = 12,
-                            Assigment_date = new DateTime(2024, 10, 1, 21, 12, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 2, 18, 37, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 3, 3, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 1, 1, 46, 0, 0, DateTimeKind.Unspecified),
                             service_id = 11,
                             status_assigment = "Completado",
                             subscriber_id = 11,
@@ -487,28 +483,26 @@ namespace backend.Migrations
                         new
                         {
                             id = 13,
-                            Assigment_date = new DateTime(2024, 10, 1, 23, 39, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 1, 11, 37, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 9, 31, 0, 0, DateTimeKind.Unspecified),
                             service_id = 12,
-                            status_assigment = "Completado",
+                            status_assigment = "En Progreso",
                             subscriber_id = 12,
                             technician_id = 12
                         },
                         new
                         {
                             id = 14,
-                            Assigment_date = new DateTime(2024, 9, 30, 18, 40, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 1, 21, 25, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 2, 8, 0, 0, DateTimeKind.Unspecified),
                             service_id = 13,
-                            status_assigment = "Completado",
+                            status_assigment = "Pendiente",
                             subscriber_id = 1,
                             technician_id = 1
                         },
                         new
                         {
                             id = 15,
-                            Assigment_date = new DateTime(2024, 10, 1, 20, 35, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 1, 14, 44, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 20, 31, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 2, 0, 45, 0, 0, DateTimeKind.Unspecified),
                             service_id = 14,
                             status_assigment = "Completado",
                             subscriber_id = 2,
@@ -517,28 +511,26 @@ namespace backend.Migrations
                         new
                         {
                             id = 16,
-                            Assigment_date = new DateTime(2024, 9, 30, 21, 50, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 1, 2, 38, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 7, 18, 0, 0, DateTimeKind.Unspecified),
                             service_id = 15,
-                            status_assigment = "Completado",
+                            status_assigment = "En Progreso",
                             subscriber_id = 3,
                             technician_id = 3
                         },
                         new
                         {
                             id = 17,
-                            Assigment_date = new DateTime(2024, 10, 1, 16, 14, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 2, 8, 8, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 13, 46, 0, 0, DateTimeKind.Unspecified),
                             service_id = 16,
-                            status_assigment = "Completado",
+                            status_assigment = "Pendiente",
                             subscriber_id = 4,
                             technician_id = 4
                         },
                         new
                         {
                             id = 18,
-                            Assigment_date = new DateTime(2024, 10, 1, 20, 40, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 1, 7, 24, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 23, 47, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 2, 17, 16, 0, 0, DateTimeKind.Unspecified),
                             service_id = 17,
                             status_assigment = "Completado",
                             subscriber_id = 5,
@@ -547,125 +539,30 @@ namespace backend.Migrations
                         new
                         {
                             id = 19,
-                            Assigment_date = new DateTime(2024, 10, 1, 5, 17, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 1, 9, 3, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 21, 47, 0, 0, DateTimeKind.Unspecified),
                             service_id = 5,
-                            status_assigment = "Completado",
+                            status_assigment = "Pendiente",
                             subscriber_id = 6,
                             technician_id = 6
                         },
                         new
                         {
                             id = 20,
-                            Assigment_date = new DateTime(2024, 9, 30, 15, 15, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 1, 5, 21, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 9, 30, 3, 42, 0, 0, DateTimeKind.Unspecified),
                             service_id = 2,
-                            status_assigment = "Completado",
+                            status_assigment = "En Progreso",
                             subscriber_id = 7,
                             technician_id = 7
                         },
                         new
                         {
                             id = 21,
-                            Assigment_date = new DateTime(2024, 9, 30, 22, 30, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 2, 17, 34, 0, 0, DateTimeKind.Unspecified),
+                            Assigment_date = new DateTime(2024, 10, 1, 7, 11, 0, 0, DateTimeKind.Unspecified),
+                            Finish_date = new DateTime(2024, 10, 2, 23, 26, 0, 0, DateTimeKind.Unspecified),
                             service_id = 1,
                             status_assigment = "Completado",
                             subscriber_id = 8,
                             technician_id = 8
-                        },
-                        new
-                        {
-                            id = 22,
-                            Assigment_date = new DateTime(2024, 9, 30, 18, 52, 0, 0, DateTimeKind.Unspecified),
-                            service_id = 3,
-                            status_assigment = "Pendiente",
-                            subscriber_id = 9,
-                            technician_id = 9
-                        },
-                        new
-                        {
-                            id = 23,
-                            Assigment_date = new DateTime(2024, 10, 1, 17, 2, 0, 0, DateTimeKind.Unspecified),
-                            service_id = 4,
-                            status_assigment = "En Progreso",
-                            subscriber_id = 10,
-                            technician_id = 10
-                        },
-                        new
-                        {
-                            id = 24,
-                            Assigment_date = new DateTime(2024, 10, 1, 0, 46, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 1, 22, 32, 0, 0, DateTimeKind.Unspecified),
-                            service_id = 5,
-                            status_assigment = "Completado",
-                            subscriber_id = 11,
-                            technician_id = 11
-                        },
-                        new
-                        {
-                            id = 25,
-                            Assigment_date = new DateTime(2024, 10, 1, 2, 44, 0, 0, DateTimeKind.Unspecified),
-                            service_id = 6,
-                            status_assigment = "Pendiente",
-                            subscriber_id = 12,
-                            technician_id = 12
-                        },
-                        new
-                        {
-                            id = 26,
-                            Assigment_date = new DateTime(2024, 9, 30, 6, 4, 0, 0, DateTimeKind.Unspecified),
-                            service_id = 7,
-                            status_assigment = "En Progreso",
-                            subscriber_id = 1,
-                            technician_id = 1
-                        },
-                        new
-                        {
-                            id = 27,
-                            Assigment_date = new DateTime(2024, 10, 1, 7, 43, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 2, 12, 52, 0, 0, DateTimeKind.Unspecified),
-                            service_id = 8,
-                            status_assigment = "Completado",
-                            subscriber_id = 2,
-                            technician_id = 2
-                        },
-                        new
-                        {
-                            id = 28,
-                            Assigment_date = new DateTime(2024, 10, 1, 13, 51, 0, 0, DateTimeKind.Unspecified),
-                            service_id = 9,
-                            status_assigment = "Pendiente",
-                            subscriber_id = 3,
-                            technician_id = 3
-                        },
-                        new
-                        {
-                            id = 29,
-                            Assigment_date = new DateTime(2024, 10, 1, 1, 23, 0, 0, DateTimeKind.Unspecified),
-                            service_id = 10,
-                            status_assigment = "En Progreso",
-                            subscriber_id = 4,
-                            technician_id = 4
-                        },
-                        new
-                        {
-                            id = 30,
-                            Assigment_date = new DateTime(2024, 10, 1, 14, 55, 0, 0, DateTimeKind.Unspecified),
-                            Finish_date = new DateTime(2024, 10, 2, 23, 15, 0, 0, DateTimeKind.Unspecified),
-                            service_id = 11,
-                            status_assigment = "Completado",
-                            subscriber_id = 5,
-                            technician_id = 5
-                        },
-                        new
-                        {
-                            id = 31,
-                            Assigment_date = new DateTime(2024, 10, 1, 10, 40, 0, 0, DateTimeKind.Unspecified),
-                            service_id = 12,
-                            status_assigment = "Pendiente",
-                            subscriber_id = 6,
-                            technician_id = 6
                         });
                 });
 
@@ -1273,212 +1170,6 @@ namespace backend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("backend.src.Models.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("email")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<int>("num_emp")
-                        .HasColumnType("int");
-
-                    b.Property<string>("password")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("role")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("email")
-                        .IsUnique();
-
-                    b.HasIndex("num_emp")
-                        .IsUnique();
-
-                    b.ToTable("Users", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            email = "admin@megacable.com.mx",
-                            num_emp = 1,
-                            password = "$2a$11$Fp1/R8n7bCX5ViSJngaJ1eUsfp1YlDR1QIieylUyA3NvDendFzKMu",
-                            role = "Admin"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            email = "luis.gomez@megacable.com.mx",
-                            num_emp = 10001,
-                            password = "$2a$11$N.B2HG/vGAcm1mYcI8Z9cuIEdRTbi64HxoCGB1ZdhQ2xcgDO9KmHO",
-                            role = "Tecnico"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            email = "laura.rodriguez@megacable.com.mx",
-                            num_emp = 10002,
-                            password = "$2a$11$2jlORK7dYkr2u64ovSX5Vu05Y07ye28.a6139NVFLryFNVYAX6roG",
-                            role = "Tecnico"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            email = "carlos.perez@megacable.com.mx",
-                            num_emp = 10003,
-                            password = "$2a$11$ECDWQkX4Qf0bO2u/BExMueosjXqyatwKcTrCuofG2N.KKOzuoqPu2",
-                            role = "Tecnico"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            email = "elena.ramirez@megacable.com.mx",
-                            num_emp = 10004,
-                            password = "$2a$11$nXNA5OUm5SqR6bS3oTYh/OiaxGhioWUCoFc5uw.LGqNfIuHiAiflO",
-                            role = "Tecnico"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            email = "miguel.sanchez@megacable.com.mx",
-                            num_emp = 10005,
-                            password = "$2a$11$PKUvzyNr3qFL9fj41cS3ueo7VbNB48UH5nFdC4fYiNnug3UR.o/iK",
-                            role = "Tecnico"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            email = "jose.torres@megacable.com.mx",
-                            num_emp = 10006,
-                            password = "$2a$11$iWoqPnn4Olfu.yVPys9AaOgE6St3vEuW2hVPiLfmv7DRlTgL.Fwdy",
-                            role = "Tecnico"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            email = "adriana.diaz@megacable.com.mx",
-                            num_emp = 10007,
-                            password = "$2a$11$u3QEAGRnBvxWcYw.2UXZ7eP44TimqtWQeZkZsVxozyrVMmKnBwpSC",
-                            role = "Tecnico"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            email = "fernando.gutierrez@megacable.com.mx",
-                            num_emp = 10008,
-                            password = "$2a$11$Gs7EIl57QSooDuW6uoGBFOOrjHPGeq.nKM3f3PgLOZOCO7XKWHY7K",
-                            role = "Tecnico"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            email = "sofia.mendez@megacable.com.mx",
-                            num_emp = 10009,
-                            password = "$2a$11$YsvRFMVJXNYo3YzVoK1LveD8a2WuiHDFuzfYMbpIVCPF.AMux8hgm",
-                            role = "Tecnico"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            email = "ricardo.ortega@megacable.com.mx",
-                            num_emp = 10010,
-                            password = "$2a$11$HhyPvCYQGKTyD.m4T2y5r.aUzvOlGV6sU8GZz1wiNy02uqRYmLFiC",
-                            role = "Tecnico"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            email = "paola.martinez@megacable.com.mx",
-                            num_emp = 10011,
-                            password = "$2a$11$ISmoLkRGZDa3zgLPE310D.ovoSQLkD/JApFW7QdyvX.gKiDuVUeKC",
-                            role = "Tecnico"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            email = "david.gonzalez@megacable.com.mx",
-                            num_emp = 10012,
-                            password = "$2a$11$hauee9A3RC1eyfcUxnLMIOpcjQbA7S57j.k3yzqbTXT8U3cz1r34S",
-                            role = "Tecnico"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            email = "ana.vargas@megacable.com.mx",
-                            num_emp = 10013,
-                            password = "$2a$11$oFSb5yzfXBJCE/FdT6Y/gOVHE6t/fbhjUEz7GrqzdyrhD//2I9UDq",
-                            role = "Tecnico"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            email = "javier.castro@megacable.com.mx",
-                            num_emp = 10014,
-                            password = "$2a$11$xFwRhg2UVu4OH0jGO2Pf6euLLVLyXHRAHWl55bRvoKOxgqvTFXd46",
-                            role = "Tecnico"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            email = "mariana.flores@megacable.com.mx",
-                            num_emp = 10015,
-                            password = "$2a$11$5l/6WpayQKyRL4VxFObtxeXB/Gl..rdzbSJP3bMGLp6TuN71WYrSG",
-                            role = "Tecnico"
-                        },
-                        new
-                        {
-                            Id = 17,
-                            email = "gabriel.rojas@megacable.com.mx",
-                            num_emp = 10016,
-                            password = "$2a$11$xrNfzM.6LgitLKQu0m8neeCVoZJjVWAUkWuvrF5895ZBrZIJDMmNq",
-                            role = "Tecnico"
-                        },
-                        new
-                        {
-                            Id = 18,
-                            email = "valentina.herrera@megacable.com.mx",
-                            num_emp = 10017,
-                            password = "$2a$11$4.EE0ssZIRRnkwSoUGEI9eKjkkIEd1788y2.p4kz25jleqxbLLUpW",
-                            role = "Tecnico"
-                        },
-                        new
-                        {
-                            Id = 19,
-                            email = "alejandro.morales@megacable.com.mx",
-                            num_emp = 10018,
-                            password = "$2a$11$Pq64MIhsApsodqoK2F0afOU88vZq/YW1c9SX8aA13OaMR3hh42slW",
-                            role = "Tecnico"
-                        },
-                        new
-                        {
-                            Id = 20,
-                            email = "isabella.jimenez@megacable.com.mx",
-                            num_emp = 10019,
-                            password = "$2a$11$M5LgKql4wJRDsqA87anC.eUcYZ6StufmuhvK93lDU5Gh3ZjMsNuIi",
-                            role = "Tecnico"
-                        },
-                        new
-                        {
-                            Id = 21,
-                            email = "daniel.acosta@megacable.com.mx",
-                            num_emp = 10020,
-                            password = "$2a$11$RiEVnqnkfJyqdsJwWJc39esCYrhjtEortz6AiErNra65fQlxx2DuO",
-                            role = "Tecnico"
-                        });
                 });
 
             modelBuilder.Entity("backend.Models.Assignment", b =>
