@@ -76,14 +76,17 @@ Este enfoque modular no solo mejora la calidad del software, sino que también p
 - Vista del Login del sistema:
 ![BD](./imagenes/login.jpg)
 
-- Vista de Panel de Administrador:
-![BD](./imagenes/filtroAdmin.jpg)
-
-- Reportes por desglose co botones en la vista del Panel Administrador:
+- Vista de Panel de Administrador: Reportes por desglose en botones de cada tecnico:
 ![BD](./imagenes/reportesDesglose.jpg)
 
-- Vista de tareas para los tecnicos:
+- Busqueda por filtro de numero de empleado en Panel Administrador
+![BD](./imagenes/filtroAdmin.jpg)
+
+- Vista de tareas para los técnicos:
 ![BD](./imagenes/panelAdmin.jpg)
+
+- Al generar el reporte dando click al bóton "Generar reporte" creara un archivo .pdf:
+![BD](./imagenes/reportepdf.jpg)
 
 - Revisión de endpoints con swagger:
 ![BD](./imagenes/swagger1.jpg)
