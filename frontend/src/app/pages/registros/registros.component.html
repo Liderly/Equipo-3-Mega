@@ -17,18 +17,8 @@ groupRowsBy="numTech"
     <ng-template pTemplate="caption">
       <div class="flex justify-between">
         <div>
-          <button
-        type="button"
-        pButton
-        icon="pi pi-file"
-        label="Generar PDF"
-        severity="danger"
-        style=" background-color: red;
-        padding: 7px 10px;
-        color: white;"
-        (click)="generatePDF()"
-
-        ></button>
+         <!-- Boton para genererar reporte en PDF -->
+         <pdf-button [currentWeekSaturday]="currentWeekSaturday" [currentWeekMonday]="currentWeekMonday" [total_Technicians]="data.total_Technicians" />
         </div>
         <h1>{{ currentWeekMonday | date:'dd/MM/yyyy' }} - {{ currentWeekSaturday | date:'dd/MM/yyyy' }}</h1>
         <div class="flex gap-3">

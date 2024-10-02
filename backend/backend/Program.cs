@@ -31,7 +31,7 @@ namespace Backend
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
                
             });
-            ///Services
+            //Services
             builder.Services.AddScoped<ITaskService, TaskService>();
             builder.Services.AddScoped<ISuscriberService, SuscriberService>();
             builder.Services.AddScoped<IBonusReportService, BonusReportService>();
@@ -47,7 +47,8 @@ namespace Backend
                 options.AddPolicy("OnlyFrontEnd",
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:4200")
+                        builder
+                        .WithOrigins("http://localhost:4200")
                         .AllowAnyMethod()
                         .AllowAnyHeader();
                     });

@@ -2,8 +2,8 @@ using Backend.DTO;
 using Backend.Models;
 using Backend.Services;
 using Microsoft.AspNetCore.Mvc;
-using backend.src.DTO;
 using backend.Models;
+using backend.src.DTO;
 
 namespace Backend.Controllers
 {
@@ -16,6 +16,36 @@ namespace Backend.Controllers
         public TasksController(ITaskService taskService)
         {
             _taskService = taskService;
+        }
+        /// <summary>
+        /// Obtiene las tareas asignadas a un técnico utilizando su número de empleado.
+        /// </summary>
+        /// <param name="NumEmp">Número de empleado único del técnico.</param>
+        /// <returns>
+        /// Un objeto <see cref="TecTasks"/> que contiene la información del técnico y sus tareas asignadas.
+        /// Devuelve un código de estado 200 OK si la operación es exitosa.
+        /// Devuelve un código de estado 404 NotFound si no se encuentra el técnico.
+        /// Devuelve un código de estado 400 BadRequest si ocurre un error inesperado.
+        /// </returns>
+        /// <response code="200">Devuelve las tareas del técnico.</response>
+        /// <response code="404">Si el técnico no se encuentra.</response>
+        /// <response code="400">Si ocurre un error inesperado.</response>
+        [HttpGet("{NumEmp}")]
+        public async Task<ActionResult<TecTasks>> Get(int NumEmp)
+        {
+            try
+            {
+                var result = await _taskService.GetTasksByNumEmp(NumEmp);
+                return Ok(result);  // Devuelve el resultado con un código 200 OK
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { message = ex.Message });  
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message }); 
+            }
         }
         /// <summary>
         /// Crea una nueva tarea.

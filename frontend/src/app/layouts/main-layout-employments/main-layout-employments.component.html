@@ -1,1 +1,48 @@
-<p>main-layout-employments works!</p>
+
+<div class="bg-gray-200">
+  <nav class="bg-white border-b border-gray-300">
+      <div class="flex justify-between items-center px-9">
+          <!-- Ícono de Menú -->
+          <button id="menuBtn" (click)="this.showSideNav=!this.showSideNav;">
+              <i class="fas fa-bars text-cyan-500 text-lg"></i>
+          </button>
+          <!-- Logo -->
+          <div class="ml-1">
+              <img src="https://logowik.com/content/uploads/images/megacable7560.logowik.com.webp" alt="logo" class="h-20 w-28">
+          </div>
+          <span></span>
+      </div>
+  </nav>
+
+  <router-outlet/>
+
+<p-sidebar [(visible)]="showSideNav" position="left" [showCloseIcon]="true" styleClass="w-auto" >
+  <div class="flex flex-col h-full justify-between p-4 space-y-4">
+    <!-- Contenedor para los elementos del menú -->
+    <div class="py-4 space-y-4">
+      @for (item of options; track item) {
+        <div
+        (click)="this.showSideNav = false"
+        [routerLink]="item.route"
+        routerLinkActive="bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
+        class="relative px-4 py-3 flex items-center space-x-4 rounded-lg text-gray-800 hover:cursor-pointer hover:bg-gradient-to-r hover:from-sky-600 hover:to-cyan-400 hover:text-white transition duration-100"
+        [routerLinkActiveOptions]="{ exact: true }">
+
+    <i [className]="item.icon"></i>
+    <span class="-mr-1 font-medium">{{ item.description }}</span>
+  </div>
+        } @empty {
+        <li>There are no items.</li>
+        }
+    </div>
+
+    <!-- Botón de Cerrar Sesión, alineado al final -->
+    <button type="button" class="relative px-4 py-3 flex items-center space-x-4 rounded-lg text-gray-800 bg-gradient-to-r hover:from-sky-600 hover:to-cyan-400 hover:text-white transition duration-100" (click)="Logout()">
+      <i class="fas fa-sign-out-alt"></i>
+      <span>Cerrar sesión</span>
+    </button>
+  </div>
+
+</p-sidebar>
+
+</div>

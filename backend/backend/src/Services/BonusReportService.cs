@@ -13,7 +13,7 @@ namespace backend.src.Services
         private readonly ICacheService _cacheService;
         private readonly BonusCalculator _bonusCalculator;
         private DateTime currentWeekMonday = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek + (int)DayOfWeek.Monday);
-        private DateTime currentWeekSaturday = DateTime.Today.AddDays(20);
+        private DateTime currentWeekSaturday = DateTime.Today.AddDays(5);
         public BonusReportService(ContextDB context, ICacheService cacheService) {
             _context = context;
             _bonusCalculator = new BonusCalculator(context);

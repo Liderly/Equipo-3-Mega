@@ -12,12 +12,12 @@ import { InputIconModule } from 'primeng/inputicon';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
-import jsPDF from 'jspdf';
+import { PdfButtonComponent } from '../../components/pdf-button/pdf-button.component';
 
 @Component({
   selector: 'app-registros',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive,SidebarModule, CommonModule,TableModule,TagModule,ButtonModule, RippleModule,InputIconModule,IconFieldModule, InputTextModule,FormsModule],
+  imports: [RouterLink, RouterLinkActive,SidebarModule, CommonModule,TableModule,TagModule,ButtonModule, RippleModule,InputIconModule,IconFieldModule, InputTextModule,FormsModule,PdfButtonComponent],
   providers: [BonusService],
   templateUrl: './registros.component.html',
   styleUrls: ['./registros.component.css'],
@@ -77,8 +77,7 @@ export class RegistrosComponent implements OnInit {
   }
   getTotalCompleteTask(data: Technitian): number {
     return data.tasks.reduce((acc: number, task: any) => {
-        // Validación: solo contar si el estado es 'Completada'
-        if (task.status === 'Completada') {
+        if (task.status === 'Completado') {
             acc += 1;
         }
         return acc; // Retornar el acumulador
@@ -102,113 +101,5 @@ searchTech($event: any){
   }
 }
 
-  async generatePDF() {
-    const pdf = new jsPDF('p', 'mm', 'a4');
-    const pageHeight = 295;
-    let position = 20;
 
-    pdf.setFontSize(16);
-    pdf.setTextColor(40);
-    pdf.setFont('helvetica', 'bold');
-
-    pdf.text('Reporte de Técnicos', 105, 10, { align: 'center' });
-    pdf.setFontSize(12);
-    pdf.setTextColor(100);
-    pdf.text(`Total de técnicos: ${this.data.total_Technicians}`, 105, 15, {
-      align: 'center',
-    });
-
-    const headers = [
-      '#',
-      'NumTech',
-      'Nombre',
-      'Tareas Completadas',
-      'Cuadrilla',
-      'Puntos',
-      'Bono',
-    ];
-    const columnWidths = [10, 30, 40, 50, 25, 20, 20];
-
-    position += 10;
-    this.generateTableHeader(pdf, headers, columnWidths, position);
-    position += 10;
-
-    pdf.setFontSize(10);
-    pdf.setTextColor(50);
-    const Techs:Technitian[]=await this.getAllReports();
-    Techs.forEach((technitian, index) => {
-      const row = [
-        (index + 1).toString(),
-        technitian.numTech.toString(),
-        technitian.name,
-        technitian.tasks.filter(task => task.status === 'Completado').length.toString(),
-        technitian.crew.toString(),
-        technitian.totalPoints.toString(),
-        technitian.totalBonus.toString(),
-      ];
-      this.generateTableRow(pdf, row, columnWidths, position);
-      position += 10;
-
-      if (position >= pageHeight - 20) {
-        pdf.addPage();
-        position = 20;
-        this.generateTableHeader(pdf, headers, columnWidths, position);
-        position += 10;
-      }
-    });
-
-    pdf.save('reporte-tecnicos.pdf');
-  }
-  generateTableHeader(
-    pdf: jsPDF,
-    headers: string[],
-    columnWidths: number[],
-    yPos: number
-  ) {
-    pdf.setFontSize(10);
-    pdf.setFont('helvetica', 'bold');
-    pdf.setTextColor(0, 0, 0); // Aseguramos que el texto sea negro
-    pdf.setDrawColor(0); // Color de las líneas de los rectángulos
-    pdf.setLineWidth(0.2); // Grosor de las líneas
-
-    headers.forEach((header, index) => {
-      const xPos = 10 + this.getColumnOffset(columnWidths, index);
-      const cellHeight = 10;
-      const cellYPos = yPos - 5;
-
-      // Dibujar el rectángulo de la cabecera sin relleno
-      pdf.rect(xPos, cellYPos, columnWidths[index], cellHeight);
-
-      // Dibujar el texto de la cabecera
-      const textXPos = xPos + 5; // Un pequeño margen izquierdo
-      const textYPos = cellYPos + 6; // Ajustamos para centrar verticalmente
-      pdf.text(header, textXPos, textYPos);
-    });
-
-    pdf.setFont('helvetica', 'normal');
-  }
-
-  generateTableRow(
-    pdf: jsPDF,
-    row: string[],
-    columnWidths: number[],
-    yPos: number
-  ) {
-    row.forEach((cell, index) => {
-      const xPos = 10 + this.getColumnOffset(columnWidths, index);
-      pdf.rect(xPos, yPos - 5, columnWidths[index], 10);
-      pdf.text(cell, xPos + columnWidths[index] / 2, yPos, {
-        align: 'center',
-        baseline: 'middle',
-      });
-    });
-  }
-
-  getColumnOffset(columnWidths:number[], index: number): number {
-    return columnWidths.slice(0, index).reduce((a, b) => a + b, 0);
-  }
-   async getAllReports(): Promise<Technitian[]> {
-    console.log(await this.bonusService.GetAllReports());
-    return await this.bonusService.GetAllReports();
-  }
 }

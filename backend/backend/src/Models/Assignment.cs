@@ -10,7 +10,7 @@ namespace backend.Models
         public int technician_id { get; set; }
         public int subscriber_id { get; set; }
         public int service_id { get; set; }
-        public string? status_assigment { get; set; }
+        public string status_assigment { get; set; }
 
         public  Technician? Technician { get; set; }
         public  Suscriber? Subscriptor { get; set; }

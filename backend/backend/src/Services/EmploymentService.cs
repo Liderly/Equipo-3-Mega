@@ -1,5 +1,6 @@
 using backend.Models;
 using backend.src.DTO;
+using backend.src.Models;
 using Backend.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,6 +25,14 @@ namespace backend.src.Services
                 phone = employmentDTO.phone,
                 employee_number = employmentDTO.employee_number
             };
+            User u = new User
+            {
+                num_emp = technician.employee_number,
+                email = employmentDTO.email,
+                password = employmentDTO.password,
+                role = employmentDTO.role
+            };
+            _Context.Users.Add(u);
             _Context.Technicians.Add(technician);
             await _Context.SaveChangesAsync(true);
             var tech = await _Context.Technicians

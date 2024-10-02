@@ -10,7 +10,9 @@ namespace Services{
     public class TaskService : ITaskService
     {
         private readonly ContextDB _context;
-        
+        private DateTime currentWeekMonday = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek + (int)DayOfWeek.Monday);
+        private DateTime currentWeekSaturday = DateTime.Today.AddDays(5);
+
 
         public TaskService(ContextDB context)
         {
@@ -86,6 +88,36 @@ namespace Services{
             await _context.SaveChangesAsync();
 
             return task;
+        }
+
+        public async Task<TecTasks> GetTasksByNumEmp(int NumTec)
+        {
+            TecTasks tecTasks = new TecTasks();
+            var technician = await _context.Technicians
+                                   .Include(t => t.Assignments.Where(a =>
+                                        a.Assigment_date >= currentWeekMonday &&
+                                        a.Assigment_date <= currentWeekSaturday))
+                                            .ThenInclude(a => a.Subscriptor)
+                                    .Include(t => t.Assignments.Where(a =>
+                                        a.Assigment_date >= currentWeekMonday &&
+                                        a.Assigment_date <= currentWeekSaturday))
+                                            .ThenInclude(a => a.JobsCatalog)
+                                   .FirstOrDefaultAsync(t => t.employee_number == NumTec);
+            if (technician == null) {
+                throw new KeyNotFoundException($"Tecnico con numero {NumTec} no encontrado");
+            }
+            tecTasks.name = technician.name+" "+technician.last_name;
+            tecTasks.numTech = technician.employee_number;
+            tecTasks.tasks = technician.Assignments?.Select(a => new ServiceInfo
+            {
+                assigmentId = a.id.ToString(),
+                client_address = a.Subscriptor.street+" , #"+a.Subscriptor.street_number+" , "+a.Subscriptor.zone,
+                client_name = a.Subscriptor.name+" "+a.Subscriptor.last_name,
+                description = a.JobsCatalog.description,
+                status = a.status_assigment,
+                assigned_date = a.Assigment_date.ToString("dddd, dd MMMM yyyy HH:mm:ss") // Formato de fecha
+            }).ToList();
+            return tecTasks;
         }
 
         public async Task<AssignmentDto> UpdateTask(int id, UpdateTaskDto taskDto)

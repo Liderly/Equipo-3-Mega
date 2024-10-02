@@ -23,6 +23,14 @@ namespace backend.src.DTO
         [Required(ErrorMessage = "El número de empleado es obligatorio")]
         [Range(1, int.MaxValue, ErrorMessage = "El número de empleado debe ser un número positivo")]
         public int employee_number { get; set; }
+        [Required(ErrorMessage ="Correo es obligatorio")]
+        [EmailAddress(ErrorMessage ="Correo invalido")]
+        public string email { get; set; }
+        [Required(ErrorMessage ="Se requiere de una contrasena ingresada por usuario")]
+        [MinLength(10,ErrorMessage ="La contrasena debe ser de minimo 10 caracteres")]
+        public string password { get; set; }
+        [Required(ErrorMessage ="El rol es obligatorio")]
+        public string role { get; set; }
     }
 
     public class UpdateEmploymentDto

@@ -41,6 +41,11 @@ namespace Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<BonusReport>> GetReportList([FromQuery] PaginateProps props, [FromQuery] int NumTec) 
         {
+            if (NumTec>0)
+            {
+                var report = await _report_service.GetBonusReport(props, NumTec);
+                return Ok(report);
+            }
             var cacheKey = $"Report_page_{props.PageNumber}";
             var EmpReport = await _cacheService.GetCache<BonusReport>(cacheKey);
             if (EmpReport == null) 
@@ -86,7 +91,7 @@ namespace Backend.Controllers
         public async Task<ActionResult<BonusReport>> GetFullReport()
         {
             var cacheKey = $"Full_Report";
-            var EmpReport = _cacheService.GetCache<BonusReport>(cacheKey);
+            var EmpReport = await _cacheService.GetCache<BonusReport>(cacheKey);
             if (EmpReport == null)
             {
                 var report = await _report_service.GetFullReport();

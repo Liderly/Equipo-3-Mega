@@ -42,10 +42,10 @@ namespace backend.Controllers
              return Ok(emp);
     }
     /// <summary>
-    /// Obtiene un empleo por su ID.
+    /// Obtiene un empleado por su ID.
     /// </summary>
-    /// <param name="id">ID del empleo a obtener.</param>
-    /// <returns>El empleo con el ID especificado.</returns>
+    /// <param name="id">ID del empleado a obtener.</param>
+    /// <returns>El empleado con el ID especificado.</returns>
     [HttpGet("{id}")]
         public async Task<ActionResult<EmploymentDto>> GetEmployment(int id)
         {
@@ -59,10 +59,10 @@ namespace backend.Controllers
             return employment;
         }
         /// <summary>
-        /// Actualiza un empleo existente.
+        /// Actualiza un empleado existente.
         /// </summary>
-        /// <param name="id">ID del empleo a actualizar.</param>
-        /// <param name="employment">Datos actualizados del empleo.</param>
+        /// <param name="id">ID del empleado a actualizar.</param>
+        /// <param name="employment">Datos actualizados del empleado.</param>
         /// <returns>Una respuesta HTTP que indica el resultado de la operación.</returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutEmployment(int id, UpdateEmploymentDto employment)
@@ -91,10 +91,10 @@ namespace backend.Controllers
             return Ok(new { Message = "Empleado actualizado con exito" });
         }
         /// <summary>
-        /// Crea un nuevo empleo.
+        /// Crea un nuevo empleado.
         /// </summary>
-        /// <param name="employment">Datos del empleo a crear.</param>
-        /// <returns>El empleo recién creado.</returns>
+        /// <param name="employment">Datos del emplado a crear.</param>
+        /// <returns>El empleado recién creado.</returns>
         [HttpPost]
         public async Task<ActionResult<EmploymentDto>> PostEmployment(CreateEmploymentDto employment)
         {

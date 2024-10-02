@@ -1,8 +1,7 @@
 using backend.Models;
-using backend.src.DTO;
+using backend.src.Models;
 using Backend.Models;
 using Microsoft.EntityFrameworkCore;
-using static backend.src.DTO.BonusReport;
 
 namespace Backend.Context
 {
@@ -13,8 +12,8 @@ namespace Backend.Context
         DbSet<Technician> Technicians { get; set; }
         DbSet<JobsCatalog> ServiceCatalogs { get; set; }
         DbSet<Assignment> Assignments { get; set; }
+        DbSet<User> Users { get; set; }
         DbSet<Bonus_tab> Bonus_Tabs { get; set; }
-        Task<List<TechInfo>> GetBonusReportAsync(string id);
         int SaveChanges();
 
         Task<int> SaveChangesAsync(bool CancellationToken,CancellationToken cancellationToken = default);
