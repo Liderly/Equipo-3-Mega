@@ -20,7 +20,7 @@ namespace Backend
             builder.Services.AddHttpClient();
             builder.Services.AddStackExchangeRedisCache(options =>
             {
-                options.Configuration = "localhost:6379"; 
+                options.Configuration = builder.Configuration["Caching:RedisConnection"]; 
                 options.InstanceName = "BonosCache";
             });
             builder.Logging.ClearProviders();
@@ -28,7 +28,7 @@ namespace Backend
             builder.Services.AddDbContext<ContextDB>(options =>
             {
                 
-                options.UseSqlServer(builder.Configuration.GetConnectionString("Connection"));
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
                
             });
             //Services
@@ -37,12 +37,7 @@ namespace Backend
             builder.Services.AddScoped<IBonusReportService, BonusReportService>();
             builder.Services.AddScoped<IEmploymentService, EmploymentService>();
             builder.Services.AddSingleton<ICacheService, CacheService>();
-
-            
-            //builder.Services.AddScoped<IUserService, UserService>();
-            //builder.Services.AddScoped<ITokenService, TokenService>();
             builder.Services.AddScoped<TokenService>();
-
             builder.Services.AddScoped<IAuthService, AuthService>();
 
             //Controllers
@@ -73,7 +68,7 @@ namespace Backend
             });
             
             var app = builder.Build();
-            var connectionString = builder.Configuration.GetConnectionString("Connection");
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
             // Mostrar la cadena de conexi�n en el log
             app.Logger.LogInformation("Connection string: {ConnectionString} en modo {1}", connectionString, Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"));
