@@ -27,7 +27,7 @@ public class AuthController : ControllerBase
         var response = await _authService.Login(request.Email, request.Password);
         if (response == null)
         {
-            return Unauthorized(new { message="Usuario o contraseña incorrectos"});
+            return Unauthorized(new { message="Correo o contraseña incorrectos"});
         }
 
         // Retornar el token y el rol del usuario 

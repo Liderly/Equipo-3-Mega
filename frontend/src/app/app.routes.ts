@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { UnauthenticatedGuard } from './guards/unauthenticated.guard';
+import { AuthenticatedGuard } from './guards/authenticated.guard';
 
 export const routes: Routes = [
   {
@@ -13,7 +15,7 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/registros/registros.component').then(
             (m) => m.RegistrosComponent
-          ),canActivate: [],
+          ),canActivate: [UnauthenticatedGuard],
           title: 'Registros',
       },
       {
@@ -21,7 +23,7 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/create-task-page/create-task-page.component').then(
             (m) => m.CreateTaskPageComponent
-          ),title: 'Registrar Tarea',
+          ),title: 'Registrar Tarea',canActivate: [UnauthenticatedGuard],
       },
       { path: '**', redirectTo: 'Registros' },
     ],
@@ -31,7 +33,7 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/login-page/login-page.component').then(
         (m) => m.LoginPageComponent
-      ),title: 'Login',
+      ),title: 'Login',canActivate: [AuthenticatedGuard],
   },
   {
     path: 'Tecnicos',
@@ -44,7 +46,7 @@ export const routes: Routes = [
           loadComponent: () =>
             import('./pages/tec-dashboard/tec-dashboard.component').then(
               (m) => m.TecDashboardComponent
-            ),title: 'Dashboard',canActivate: [],
+            ),title: 'Dashboard',canActivate: [UnauthenticatedGuard],
         },
         {
           path: '**',redirectTo: 'Dashboard',

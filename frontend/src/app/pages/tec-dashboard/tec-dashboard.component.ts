@@ -25,7 +25,8 @@ export class TecDashboardComponent implements OnInit {
     this.calculateCurrentWeekDates();
   }
   ngOnInit(): void {
-    this.TaskService.getTasksByEmp(10001).subscribe((data:TechInfo)=>{
+    const numEmp: number = parseInt(localStorage.getItem('numEmp') ?? '0');
+    this.TaskService.getTasksByEmp(numEmp).subscribe((data:TechInfo)=>{
       this.data=data;
     });
   }

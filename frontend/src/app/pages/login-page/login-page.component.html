@@ -13,19 +13,19 @@
         Bienvenido
         <div class="pt-10 pr-20">
           <label class="text-sm font-sans font-medium">
-            Número de empleado
+            Correo de empleado
           </label>
           <input
-            [ngClass]="{ 'border-red-600': IsInvalidField('NumEmpleado') }"
-            formControlName="NumEmpleado"
+            [ngClass]="{ 'border-red-600': IsInvalidField('email') }"
+            formControlName="email"
             type="text"
             autocomplete="off"
-            placeholder="Ingresa tu número de empleado"
+            placeholder="Ingresa tu correo empresarial"
             class="w-full bg-black py-3 px-12 mt-5 border hover: border-gray-500 rounded shadow text-base font-sans"
           />
-          @if (IsInvalidField('NumEmpleado')) {
+          @if (IsInvalidField('email')) {
           <small class="text-red-700 text-sm">{{
-            getErrorMessage("NumEmpleado")
+            getErrorMessage("email")
           }}</small>
           }
         </div>
@@ -39,12 +39,15 @@
             placeholder="Ingresa tu contraseña"
             class="w-full bg-black py-3 px-12 mt-5 border hover:border-gray-500 rounded shadow text-base font-sans"
           />
-          @if (IsInvalidField('NumEmpleado')) {
+          @if (IsInvalidField('password')) {
           <small class="text-red-700 text-sm">{{
-            getErrorMessage("NumEmpleado")
+            getErrorMessage("password")
           }}</small>
           }
         </div>
+        @if(MessageError!=""){
+          <small class="text-red-600" style="font-size: 12px;" >{{MessageError}}</small>
+        }
         <!-- Botón -->
         <div class="text-sm font-sans font-medium w-full pr-20 pt-14">
           <button

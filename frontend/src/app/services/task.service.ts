@@ -16,4 +16,10 @@ export class TaskService {
     getTasksByEmp(NumEmp:number):Observable <TechInfo>{
       return this.HttpClient.get<TechInfo>(`${this.apiurl}/${NumEmp}`);
     }
+    createTask(task:any):Observable<TechInfo>{
+      return this.HttpClient.post<TechInfo>(this.apiurl,task);
+    }
+    getTasks():Observable<TechInfo>{
+      return this.HttpClient.get<TechInfo>(this.apiurl);
+    }
 }

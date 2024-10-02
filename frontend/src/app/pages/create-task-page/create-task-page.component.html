@@ -5,6 +5,7 @@
   label="Agregar Tarea"
   icon="pi pi-plus"
   (click)="showModal()"
+  [style]="{'padding':'5px','background-color':'#4CAF50','color':'white','margin':'10px' }"
 ></button>
 
 <!-- Modal usando p-dialog de PrimeNG con más ancho y espacio -->
@@ -95,3 +96,50 @@
     </div>
   </div>
 </p-dialog>
+
+<p-table
+#TechsTable
+[value]="data.tasks"
+[paginator]="true"
+[rows]="10"
+[totalRecords]="data.totaltasks"
+[lazy]="true"
+[loading]="false"
+sortField="assigned_date"
+sortMode="single"
+dataKey="numTech"
+groupRowsBy="name"
+[tableStyle]="{'min-width': '70rem','border-collapse': 'collapse'}">
+    <ng-template pTemplate="caption">
+      <div class="flex justify-between">
+        <div>
+          Tareas de la semana
+        </div>
+        <h1>Ciclo - {{ currentWeekMonday | date:'dd/MM/yyyy' }} - {{ currentWeekSaturday | date:'dd/MM/yyyy' }}</h1>
+      </div>
+  </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:10%;border: 1px solid #ccc;text-align: center;">Numero tarea</th>
+                <th style="width:20%;border: 1px solid #ccc;text-align: center;">Direccion</th>
+                <th style="width:20%;border: 1px solid #ccc;text-align: center;">Descripcion</th>
+                <th style="width:20%;border: 1px solid #ccc;text-align: center;">Fecha de asignacion</th>
+                <th style="width:10%;border: 1px solid #ccc;text-align: center;">Estado</th>
+                <th style="width:23%;border: 1px solid #ccc;text-align: center;">Tecnico</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-task>
+          <tr>
+            <td style="border: 1px solid #cccccc3b;text-align: center;">{{ task.client_name }}</td>
+            <td style="border: 1px solid #cccccc3b;text-align: center;">{{ task.client_address }}</td>
+            <td style="border: 1px solid #cccccc3b;text-align: center;">{{ task.description }}</td>
+            <td style="border: 1px solid #cccccc3b;text-align: center;">{{ task.assigned_date | date :'medium':'ES'}}</td>
+            <td style="border: 1px solid #cccccc3b;text-align: center;">
+              <p-tag [value]="task.status" [severity]="getStatusTag(task.status)"></p-tag>
+            </td>
+           <td  style="border: 1px solid #cccccc3b;text-align: center;">
+            tecnico
+            </td>
+          </tr>
+        </ng-template>
+</p-table>

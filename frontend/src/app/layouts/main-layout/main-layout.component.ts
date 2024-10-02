@@ -23,6 +23,7 @@ export class MainLayoutComponent {
   showSideNav: boolean = false;
 
 Logout(){
+  localStorage.clear();
   this.showSideNav = false;
   this.router.navigate(["/login"]);
 }
